@@ -78,7 +78,7 @@ function ScrambleText({ text }: { text: string }) {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
   // Brand colors + red/blue/glitch colors
-  const colors = ["#ffffff", "#ef4444", "#3b82f6", "#B8FF00", "#7B2FBE", "#00ffff"]; 
+  const colors = ["#ffffff", "#F17522", "#387BBF", "#F59B5C", "#639FD9", "#00ffff"]; 
 
   useEffect(() => {
     if (!isInView) {
@@ -396,8 +396,8 @@ function ExperienceZonesSection() {
 
   const CapitalIcon = () => (
     <motion.svg viewBox="0 0 100 100" stroke={strokeColor} strokeWidth={iconStrokeWidth} strokeLinecap="round" strokeLinejoin="round" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="w-20 h-20 md:w-[120px] md:h-[120px] mx-auto transform transition-transform duration-300">
-      <motion.rect x="15" y="30" width="70" height="40" rx="2" fill="#8b5cf6" variants={drawVariant} custom={0} />
-      <motion.circle cx="50" cy="50" r="12" fill="#a7f3d0" variants={drawVariant} custom={1} />
+      <motion.rect x="15" y="30" width="70" height="40" rx="2" fill="#F17522" variants={drawVariant} custom={0} />
+      <motion.circle cx="50" cy="50" r="12" fill="#387BBF" variants={drawVariant} custom={1} />
       <motion.circle cx="50" cy="50" r="4" fill={strokeColor} variants={drawVariant} custom={2} />
       <motion.path d="M25 40 L35 40 M65 40 L75 40 M25 60 L35 60 M65 60 L75 60" variants={drawVariant} custom={3} />
       {/* Speed lines */}
@@ -407,8 +407,8 @@ function ExperienceZonesSection() {
 
   const BuildersIcon = () => (
     <motion.svg viewBox="0 0 100 100" stroke={strokeColor} strokeWidth={iconStrokeWidth} strokeLinecap="round" strokeLinejoin="round" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="w-20 h-20 md:w-[120px] md:h-[120px] mx-auto transform transition-transform duration-300">
-      <motion.circle cx="50" cy="35" r="25" fill="#f59e0b" variants={drawVariant} custom={0} />
-      <motion.circle cx="50" cy="35" r="14" fill="#8b5cf6" variants={drawVariant} custom={1} />
+      <motion.circle cx="50" cy="35" r="25" fill="#387BBF" variants={drawVariant} custom={0} />
+      <motion.circle cx="50" cy="35" r="14" fill="#F17522" variants={drawVariant} custom={1} />
       <motion.path d="M34 56 L66 56 L58 75 L42 75 Z" fill="#ea580c" variants={drawVariant} custom={2} />
       <motion.path d="M42 75 L58 75 L50 90 Z" fill="#fde047" variants={drawVariant} custom={3} />
       <motion.path d="M50 90 L48 85 L52 85 Z" fill={strokeColor} variants={drawVariant} custom={4} />
@@ -433,7 +433,7 @@ function ExperienceZonesSection() {
 
   const PolicyIcon = () => (
     <motion.svg viewBox="0 0 100 100" stroke={strokeColor} strokeWidth={iconStrokeWidth} strokeLinecap="round" strokeLinejoin="round" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="w-20 h-20 md:w-[120px] md:h-[120px] mx-auto transform transition-transform duration-300">
-      <motion.circle cx="50" cy="45" r="30" fill="#3b82f6" variants={drawVariant} custom={0} />
+      <motion.circle cx="50" cy="45" r="30" fill="#387BBF" variants={drawVariant} custom={0} />
       <motion.ellipse cx="50" cy="45" rx="12" ry="30" fill="none" variants={drawVariant} custom={1} />
       <motion.path d="M20 45 L80 45" variants={drawVariant} custom={2} />
       <motion.path d="M35 20 C 35 20, 65 20, 65 20" variants={drawVariant} custom={3} />
@@ -976,26 +976,26 @@ function SponsorshipSection() {
     { 
       tier: "BRONZE", 
       perks: "Brand visibility + exhibition presence + digital programme listing",
-      color: "from-[#CD7F32] to-[#8B4513]",
-      glow: "rgba(205, 127, 50, 0.3)"
+      color: "from-[#F59B5C] to-[#B85514]",
+      glow: "rgba(241, 117, 34, 0.3)"
     },
     { 
       tier: "SILVER", 
       perks: "Bronze + speaking slot + networking session + audience data report",
-      color: "from-[#C0C0C0] to-[#707070]",
-      glow: "rgba(192, 192, 192, 0.3)"
+      color: "from-[#639FD9] to-[#265A8C]",
+      glow: "rgba(56, 123, 191, 0.3)"
     },
     { 
       tier: "GOLD", 
       perks: "Silver + Deal Room naming rights + investor introductions + co-branded content",
-      color: "from-[#FFD700] to-[#B8860B]",
-      glow: "rgba(255, 215, 0, 0.3)"
+      color: "from-[#F17522] to-[#B85514]",
+      glow: "rgba(241, 117, 34, 0.5)"
     },
     { 
       tier: "TITLE PARTNER", 
       perks: "Full co-branding + keynote slot + exclusive lounge + first right of refusal 2027",
-      color: "from-[#FFFFFF] to-[#888888]",
-      glow: "rgba(255, 255, 255, 0.3)"
+      color: "from-[#387BBF] to-[#081D33]",
+      glow: "rgba(56, 123, 191, 0.5)"
     }
   ];
 

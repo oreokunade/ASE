@@ -11,10 +11,10 @@
   --color-brand-bg: #050505; /* True dark for that premium feel */
   --color-brand-surface: #0a0a0a;
   --color-brand-dark: #FFFFFF;
-  --color-brand-primary: #7B2FBE;
-  --color-brand-accent: #B8FF00;
-  --color-brand-teal: #083333; /* Dark teal */
-  --color-brand-gold: #D4AF37; /* Gold */
+  --color-brand-primary: #F17522; /* Orange */
+  --color-brand-accent: #387BBF; /* Blue */
+  --color-brand-teal: #081D33; /* Darker blue */
+  --color-brand-gold: #387BBF; /* Blue replacing gold */
   --color-brand-gray: #111111;
   --color-brand-text-muted: #888888;
   
