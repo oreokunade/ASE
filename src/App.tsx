@@ -667,8 +667,57 @@ function WhyAttendSection() {
     </section>
   );
 }
-
 function StartupShowcaseSection() {
+  const drawVariant = {
+    hidden: { pathLength: 0, fillOpacity: 0 },
+    visible: (i: number) => ({
+      pathLength: 1,
+      fillOpacity: 1,
+      transition: {
+        pathLength: { delay: i * 0.15, type: "spring", duration: 1.5, bounce: 0 },
+        fillOpacity: { delay: i * 0.15 + 0.4, duration: 0.5, ease: "easeIn" }
+      }
+    })
+  };
+
+  const strokeColor = "rgba(255, 255, 255, 0.9)";
+  const iconStrokeWidth = "3.5";
+
+  const PitchIcon = () => (
+    <motion.svg viewBox="0 0 100 100" stroke={strokeColor} strokeWidth={iconStrokeWidth} strokeLinecap="round" strokeLinejoin="round" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="w-16 h-16 md:w-20 md:h-20 transform transition-transform duration-300">
+      <motion.rect x="35" y="20" width="30" height="45" rx="15" fill="#387BBF" variants={drawVariant} custom={0} />
+      <motion.path d="M25 45 C 25 65, 75 65, 75 45" variants={drawVariant} custom={1} />
+      <motion.path d="M50 65 L50 80 M35 80 L65 80" variants={drawVariant} custom={2} />
+    </motion.svg>
+  );
+
+  const BoothIcon = () => (
+    <motion.svg viewBox="0 0 100 100" stroke={strokeColor} strokeWidth={iconStrokeWidth} strokeLinecap="round" strokeLinejoin="round" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="w-16 h-16 md:w-20 md:h-20 transform transition-transform duration-300">
+      <motion.rect x="20" y="40" width="60" height="40" fill="#F17522" variants={drawVariant} custom={0} />
+      <motion.path d="M15 40 L50 20 L85 40 Z" fill="#fde047" variants={drawVariant} custom={1} />
+      <motion.rect x="40" y="55" width="20" height="25" fill="#387BBF" variants={drawVariant} custom={2} />
+    </motion.svg>
+  );
+
+  const MeetingsIcon = () => (
+    <motion.svg viewBox="0 0 100 100" stroke={strokeColor} strokeWidth={iconStrokeWidth} strokeLinecap="round" strokeLinejoin="round" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="w-16 h-16 md:w-20 md:h-20 transform transition-transform duration-300">
+      <motion.path d="M20 50 C 20 40, 45 40, 45 50 L45 65 L20 65 Z" fill="#387BBF" variants={drawVariant} custom={0} />
+      <motion.path d="M80 50 C 80 40, 55 40, 55 50 L55 65 L80 65 Z" fill="#F17522" variants={drawVariant} custom={1} />
+      <motion.circle cx="32" cy="30" r="10" fill="#fde047" variants={drawVariant} custom={2} />
+      <motion.circle cx="68" cy="30" r="10" fill="#fde047" variants={drawVariant} custom={3} />
+      <motion.path d="M40 55 L60 55" strokeWidth={5} variants={drawVariant} custom={4} />
+    </motion.svg>
+  );
+
+  const FeedbackIcon = () => (
+    <motion.svg viewBox="0 0 100 100" stroke={strokeColor} strokeWidth={iconStrokeWidth} strokeLinecap="round" strokeLinejoin="round" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="w-16 h-16 md:w-20 md:h-20 transform transition-transform duration-300">
+      <motion.path d="M20 25 L80 25 L80 65 L55 65 L45 75 L35 65 L20 65 Z" fill="#387BBF" variants={drawVariant} custom={0} />
+      <motion.circle cx="40" cy="45" r="4" fill="#fde047" variants={drawVariant} custom={1} />
+      <motion.circle cx="50" cy="45" r="4" fill="#fde047" variants={drawVariant} custom={2} />
+      <motion.circle cx="60" cy="45" r="4" fill="#fde047" variants={drawVariant} custom={3} />
+    </motion.svg>
+  );
+
   return (
     <section id="startups" className="py-8 md:py-24 border-b border-white/10 bg-[#050505]">
       <div className="max-w-[1400px] mx-auto flex flex-col gap-20 px-2 md:px-6">
@@ -693,10 +742,10 @@ function StartupShowcaseSection() {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {[
-            { stat: "05 Min", label: "Live Pitch Slot", icon: <Mic className="w-8 h-8 text-brand-primary" /> },
-            { stat: "3×3m", label: "Branded Booth", icon: <MapPin className="w-8 h-8 text-brand-primary" /> },
-            { stat: "3", label: "Curated Investor Meetings", icon: <Handshake className="w-8 h-8 text-brand-primary" /> },
-            { stat: "30 Min", label: "Expert Feedback Session", icon: <Users className="w-8 h-8 text-brand-primary" /> }
+            { stat: "05 Min", label: "Live Pitch Slot", icon: <PitchIcon /> },
+            { stat: "3×3m", label: "Branded Booth", icon: <BoothIcon /> },
+            { stat: "3", label: "Curated Investor Meetings", icon: <MeetingsIcon /> },
+            { stat: "30 Min", label: "Expert Feedback Session", icon: <FeedbackIcon /> }
           ].map((item, i) => (
             <div key={i} className="relative group p-6 md:p-10 flex flex-col items-center text-center justify-center rounded-2xl overflow-hidden min-h-[300px] md:min-h-[380px] border border-white/5 bg-[#0a0a0a] hover:border-white/20 transition-colors duration-500">
               {/* Glowing Background Blobs */}
@@ -707,8 +756,8 @@ function StartupShowcaseSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
               <div className="relative z-10 flex flex-col items-center w-full">
-                {/* Icon Container with Glass Effect */}
-                <div className="w-16 h-16 md:w-24 md:h-24 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md flex items-center justify-center mb-6 md:mb-10 group-hover:scale-110 group-hover:-translate-y-2 group-hover:bg-white/[0.08] transition-all duration-500 shadow-2xl">
+                {/* Icon Container */}
+                <div className="mb-6 md:mb-10 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500">
                   {item.icon}
                 </div>
                 
