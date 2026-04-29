@@ -248,8 +248,8 @@ function Hero() {
     <section className="relative min-h-screen flex flex-col overflow-hidden bg-[#050505] pt-32 md:pt-[160px]">
       {/* Background Image */}
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0 origin-bottom bg-[#050505]">
-        {/* Minimal overlays for max video visibility */}
-        <div className="absolute inset-0 bg-black/10 z-10" />
+        {/* Minimal overlays for max video visibility - stronger on mobile */}
+        <div className="absolute inset-0 bg-black/40 md:bg-black/10 z-10" />
         <video 
           autoPlay 
           muted 
@@ -280,7 +280,7 @@ function Hero() {
             Abuja Startup Expo 2026
           </motion.div>
           
-          <h1 className="text-3xl sm:text-4xl md:text-7xl lg:text-[85px] font-black text-white text-left leading-[1.05] font-hero drop-shadow-2xl flex flex-col items-start">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[85px] font-black text-white text-left leading-[1.05] font-hero drop-shadow-2xl flex flex-col items-start">
             <span className="block overflow-hidden pb-2">
               {Array.from("The Deal").map((char, i) => (
                 <motion.span
@@ -516,37 +516,110 @@ function ExperienceZonesSection() {
 }
 
 function WhyAttendSection() {
+  const drawVariant = {
+    hidden: { pathLength: 0, fillOpacity: 0 },
+    visible: (i: number) => ({
+      pathLength: 1,
+      fillOpacity: 1,
+      transition: {
+        pathLength: { delay: i * 0.15, type: "spring", duration: 1.5, bounce: 0 },
+        fillOpacity: { delay: i * 0.15 + 0.4, duration: 0.5, ease: "easeIn" }
+      }
+    })
+  };
+
+  const strokeColor = "rgba(255, 255, 255, 0.9)";
+  const iconStrokeWidth = "3.5";
+
+  const InvestorsIcon = () => (
+    <motion.svg viewBox="0 0 100 100" stroke={strokeColor} strokeWidth={iconStrokeWidth} strokeLinecap="round" strokeLinejoin="round" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="w-16 h-16 md:w-24 md:h-24 transform transition-transform duration-300">
+      <motion.rect x="15" y="35" width="70" height="45" rx="5" fill="#387BBF" variants={drawVariant} custom={0} />
+      <motion.path d="M15 45 L85 45" variants={drawVariant} custom={1} />
+      <motion.circle cx="50" cy="57" r="10" fill="#F17522" variants={drawVariant} custom={2} />
+      <motion.path d="M45 57 L55 57 M50 52 L50 62" variants={drawVariant} custom={3} />
+    </motion.svg>
+  );
+
+  const PartnersIcon = () => (
+    <motion.svg viewBox="0 0 100 100" stroke={strokeColor} strokeWidth={iconStrokeWidth} strokeLinecap="round" strokeLinejoin="round" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="w-16 h-16 md:w-24 md:h-24 transform transition-transform duration-300">
+      <motion.circle cx="35" cy="50" r="20" fill="#F17522" variants={drawVariant} custom={0} />
+      <motion.circle cx="65" cy="50" r="20" fill="#387BBF" variants={drawVariant} custom={1} />
+      <motion.path d="M50 40 L50 60" variants={drawVariant} custom={2} />
+    </motion.svg>
+  );
+
+  const FundingIcon = () => (
+    <motion.svg viewBox="0 0 100 100" stroke={strokeColor} strokeWidth={iconStrokeWidth} strokeLinecap="round" strokeLinejoin="round" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="w-16 h-16 md:w-24 md:h-24 transform transition-transform duration-300">
+      <motion.path d="M20 80 L80 80" variants={drawVariant} custom={0} />
+      <motion.path d="M30 80 L30 60" variants={drawVariant} custom={1} fill="#F17522" />
+      <motion.path d="M50 80 L50 40" variants={drawVariant} custom={2} fill="#387BBF" />
+      <motion.path d="M70 80 L70 20" variants={drawVariant} custom={3} fill="#fde047" />
+      <motion.path d="M25 65 L45 45 L65 25 L85 10" stroke="#F17522" variants={drawVariant} custom={4} />
+    </motion.svg>
+  );
+
+  const TalentIcon = () => (
+    <motion.svg viewBox="0 0 100 100" stroke={strokeColor} strokeWidth={iconStrokeWidth} strokeLinecap="round" strokeLinejoin="round" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="w-16 h-16 md:w-24 md:h-24 transform transition-transform duration-300">
+      <motion.circle cx="50" cy="35" r="20" fill="#387BBF" variants={drawVariant} custom={0} />
+      <motion.path d="M25 80 C 25 60, 75 60, 75 80" fill="#F17522" variants={drawVariant} custom={1} />
+      <motion.circle cx="75" cy="35" r="10" fill="#fde047" variants={drawVariant} custom={2} />
+      <motion.path d="M72 35 L78 35 M75 32 L75 38" variants={drawVariant} custom={3} />
+    </motion.svg>
+  );
+
+  const ExpansionIcon = () => (
+    <motion.svg viewBox="0 0 100 100" stroke={strokeColor} strokeWidth={iconStrokeWidth} strokeLinecap="round" strokeLinejoin="round" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="w-16 h-16 md:w-24 md:h-24 transform transition-transform duration-300">
+      <motion.circle cx="50" cy="50" r="35" fill="#387BBF" variants={drawVariant} custom={0} />
+      <motion.path d="M50 15 L50 85 M15 50 L85 50" variants={drawVariant} custom={1} />
+      <motion.path d="M30 30 L70 70 M70 30 L30 70" variants={drawVariant} custom={2} />
+      <motion.circle cx="70" cy="30" r="8" fill="#F17522" variants={drawVariant} custom={3} />
+    </motion.svg>
+  );
+
+  const AuthorityIcon = () => (
+    <motion.svg viewBox="0 0 100 100" stroke={strokeColor} strokeWidth={iconStrokeWidth} strokeLinecap="round" strokeLinejoin="round" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="w-16 h-16 md:w-24 md:h-24 transform transition-transform duration-300">
+      <motion.path d="M50 15 L80 30 L80 60 L50 85 L20 60 L20 30 Z" fill="#F17522" variants={drawVariant} custom={0} />
+      <motion.path d="M50 35 L55 45 L65 45 L58 52 L61 62 L50 55 L39 62 L42 52 L35 45 L45 45 Z" fill="#fde047" variants={drawVariant} custom={1} />
+    </motion.svg>
+  );
+
   const benefits = [
-    {
-      title: "Meet Investors Directly",
-      desc: "Skip cold emails and pitch decks into the void. CONVERGE puts you in the room with the people who can write the cheque — curated, structured sessions engineered for action.",
-      img: CardBg1
+    { 
+      title: "Meet Investors Directly", 
+      desc: "Skip cold emails and pitch decks into the void. CONVERGE puts you in the room with the people who can write the cheque — curated, structured sessions engineered for action.", 
+      img: CardBg1,
+      icon: <InvestorsIcon />
     },
-    {
-      title: "Find Real Partners",
-      desc: "Corporates, governments, and fellow founders ready to build together. Every introduction at CONVERGE is a potential partnership. The room is full of the right ones.",
-      img: CardBg2
+    { 
+      title: "Find Real Partners", 
+      desc: "Corporates, governments, and fellow founders ready to build together. Every introduction at CONVERGE is a potential partnership. The room is full of the right ones.", 
+      img: CardBg2,
+      icon: <PartnersIcon />
     },
-    {
-      title: "Raise Funding",
-      desc: "Structured pitch sessions, the Deal Room, and direct investor access designed to help startups start and close funding rounds. Not a competition. A funding environment.",
-      img: CardBg3
+    { 
+      title: "Raise Funding", 
+      desc: "Structured pitch sessions, the Deal Room, and direct investor access designed to help startups start and close funding rounds. Not a competition. A funding environment.", 
+      img: CardBg3,
+      icon: <FundingIcon />
     },
-    {
-      title: "Discover Startups",
-      desc: "For investors and corporates: curated, vetted startups across key verticals — pre-selected for quality, investor readiness, and market traction. The signal, not the noise.",
-      img: HeroBg
+    { 
+      title: "Hiring Top Talent", 
+      desc: "Connect with the brightest engineers, operators, and designers in the region. Abuja’s elite talent pool is here, ready for their next mission.", 
+      img: HeroBg,
+      icon: <TalentIcon />
     },
-    {
-      title: "Close Deals",
-      desc: "We don’t just facilitate conversations — we facilitate outcomes. Every zone, session, and networking moment is structured to push conversations toward commitment.",
-      img: CardBg1
+    { 
+      title: "Market Expansion", 
+      desc: "Gain the regulatory insights and government introductions needed to scale across Nigeria and into the rest of the continent.", 
+      img: CardBg1,
+      icon: <ExpansionIcon />
     },
-    {
-      title: "Build Ecosystem Visibility",
-      desc: "Get your startup, fund, or organisation positioned at the centre of Nigeria’s most important innovation conversation — in the city where the next chapter is being written.",
-      img: CardBg2
-    }
+    { 
+      title: "Brand Authority", 
+      desc: "Position your brand at the center of the conversation. CONVERGE is where the stories of Nigeria’s tech future are told first.", 
+      img: CardBg2,
+      icon: <AuthorityIcon />
+    },
   ];
 
   return (
@@ -563,23 +636,30 @@ function WhyAttendSection() {
 
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
           {benefits.map((b, i) => (
-            <div key={i} className="group relative overflow-hidden bg-[#050505] min-h-[380px] md:min-h-[420px] flex flex-col p-4 md:p-12">
+            <div key={i} className="group relative overflow-hidden bg-[#0a0a0a] min-h-[380px] md:min-h-[450px] flex flex-col p-6 md:p-10 hover:bg-[#111] transition-all duration-500">
               <div 
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110 opacity-100"
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110 opacity-100 hidden md:block"
                 style={{ backgroundImage: `url(${b.img})` }}
               />
-              {/* Legibility Scrim */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
+              {/* Desktop-only Scrim */}
+              <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/90 via-[#050505]/40 to-transparent opacity-100" />
               
-              <div className="relative z-10 flex flex-col h-full justify-between">
-                <div className="flex justify-end items-center mb-8 pb-6 border-b border-white/20">
-                  <span className="text-white/80 font-heading font-black text-2xl group-hover:text-white transition-colors">0{i+1} / 06</span>
-                </div>
-                <div>
-                  <h3 className="text-xl md:text-3xl font-bold font-heading text-white mb-4 pr-4 leading-tight">{b.title}</h3>
-                  <p className="text-white/80 font-light leading-relaxed text-[11px] md:text-sm group-hover:text-white transition-colors">{b.desc}</p>
+              {/* Background ID number style */}
+              <div className="absolute top-0 right-0 p-4 md:p-8 text-6xl md:text-8xl font-black font-heading text-white/[0.03] group-hover:text-brand-primary/5 transition-colors">
+                0{i+1}
+              </div>
+
+              <div className="relative z-10 mb-auto">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-white/80 mb-2 text-left">BENEFIT 0{i+1}</div>
+                <h3 className="text-sm md:text-2xl font-bold font-heading text-white mb-4 md:mb-6 tracking-tight text-left leading-tight pr-4">{b.title}</h3>
+                <div className="w-full flex items-center justify-start my-6 md:my-12 group-hover:scale-110 transition-transform duration-500">
+                  {b.icon}
                 </div>
               </div>
+
+              <p className="text-white font-light leading-relaxed text-xs md:text-base relative z-10 text-left">
+                {b.desc}
+              </p>
             </div>
           ))}
         </div>
@@ -835,11 +915,14 @@ function VolunteerSection() {
               transition={{ delay: i * 0.1 }}
               className="bg-[#080808] p-6 md:p-10 hover:bg-[#111] transition-all duration-500 relative overflow-hidden group min-h-[300px] flex flex-col justify-end"
             >
-              {/* Background Image on Hover */}
-              <div className="absolute inset-0 z-0 opacity-100 transition-opacity duration-700">
+              {/* Background Image on Hover (Desktop Only) */}
+              <div className="absolute inset-0 z-0 opacity-100 transition-opacity duration-700 hidden md:block">
                 <img src={r.img} alt={r.title} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/90 via-[#050505]/40 to-transparent opacity-100" />
               </div>
+              {/* Mobile-only brand accent */}
+              <div className="md:hidden absolute top-0 left-0 w-1 h-full bg-brand-accent/50" />
+              <div className="md:hidden absolute inset-0 bg-[#080808] z-[-1]" />
               
               <div className="text-brand-primary/10 font-black font-heading text-4xl md:text-6xl absolute top-6 right-6 group-hover:text-brand-primary/30 transition-colors">0{i+1}</div>
               <h4 className="text-lg md:text-xl font-black font-heading text-white mb-4 relative z-10 uppercase tracking-tight group-hover:text-brand-accent transition-colors">{r.title}</h4>
