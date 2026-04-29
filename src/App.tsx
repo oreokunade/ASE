@@ -474,7 +474,7 @@ function ExperienceZonesSection() {
   ];
 
   return (
-    <section id="experience" className="py-12 md:py-24 border-b border-white/10 bg-[#050505]">
+    <section id="experience" className="py-8 md:py-24 border-b border-white/10 bg-[#050505]">
       <div className="max-w-[1400px] mx-auto px-2 md:px-6">
         <div className="grid lg:grid-cols-3 gap-16 mb-20">
           <div className="lg:col-span-2">
@@ -550,7 +550,7 @@ function WhyAttendSection() {
   ];
 
   return (
-    <section className="section-padding border-b border-white/10 bg-[#080808]">
+    <section className="py-8 md:py-24 border-b border-white/10 bg-[#080808]">
       <div className="max-w-[1400px] mx-auto px-2 md:px-6">
         <div className="grid lg:grid-cols-12 gap-16 mb-20">
           <div className="lg:col-span-6">
@@ -563,11 +563,14 @@ function WhyAttendSection() {
 
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
           {benefits.map((b, i) => (
-            <div key={i} className="group relative overflow-hidden bg-[#050505] min-h-[420px] flex flex-col p-6 lg:p-12">
+            <div key={i} className="group relative overflow-hidden bg-[#050505] min-h-[380px] md:min-h-[420px] flex flex-col p-4 md:p-12">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110 opacity-100"
                 style={{ backgroundImage: `url(${b.img})` }}
               />
+              {/* Legibility Scrim */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
+              
               <div className="relative z-10 flex flex-col h-full justify-between">
                 <div className="flex justify-end items-center mb-8 pb-6 border-b border-white/20">
                   <span className="text-white/50 font-heading font-black text-2xl group-hover:text-white transition-colors">0{i+1} / 06</span>
@@ -587,7 +590,7 @@ function WhyAttendSection() {
 
 function StartupShowcaseSection() {
   return (
-    <section id="startups" className="section-padding border-b border-white/10 bg-[#050505]">
+    <section id="startups" className="py-8 md:py-24 border-b border-white/10 bg-[#050505]">
       <div className="max-w-[1400px] mx-auto flex flex-col gap-20 px-2 md:px-6">
         <div className="text-left md:text-center flex flex-col items-start md:items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">Startup Programme</motion.div>
@@ -673,7 +676,7 @@ function SpeakersSection() {
   ];
 
   return (
-    <section id="speakers" className="section-padding border-b border-white/10 bg-[#020202]">
+    <section id="speakers" className="py-8 md:py-24 border-b border-white/10 bg-[#020202]">
       <div className="max-w-[1400px] mx-auto px-2 md:px-6">
         <div className="grid lg:grid-cols-12 gap-16 mb-20">
           <div className="lg:col-span-5">
@@ -774,8 +777,8 @@ function VolunteerSection() {
   };
 
   return (
-    <section id="volunteer" className="py-12 md:py-16 border-b border-white/10 bg-[#050505]">
-      <div className="max-w-[1400px] mx-auto px-6">
+    <section id="volunteer" className="py-8 md:py-24 border-b border-white/10 bg-[#050505]">
+      <div className="max-w-[1400px] mx-auto px-2 md:px-6">
         <div className="grid lg:grid-cols-12 gap-16 mb-20">
           <motion.div 
             initial="hidden"
@@ -833,8 +836,9 @@ function VolunteerSection() {
               className="bg-[#080808] p-6 md:p-10 hover:bg-[#111] transition-all duration-500 relative overflow-hidden group min-h-[300px] flex flex-col justify-end"
             >
               {/* Background Image on Hover */}
-              <div className="absolute inset-0 z-0 opacity-80 transition-opacity duration-700">
-                <img src={r.img} alt={r.title} className="w-full h-full object-cover transition-transform duration-1000" />
+              <div className="absolute inset-0 z-0 opacity-100 transition-opacity duration-700">
+                <img src={r.img} alt={r.title} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
               </div>
               
               <div className="text-brand-primary/10 font-black font-heading text-4xl md:text-6xl absolute top-6 right-6 group-hover:text-brand-primary/30 transition-colors">0{i+1}</div>
@@ -998,7 +1002,7 @@ function SponsorshipSection() {
   ];
 
   return (
-    <section id="sponsors" className="section-padding border-b border-white/10 bg-[#050505] relative overflow-hidden">
+    <section id="sponsors" className="py-8 md:py-24 border-b border-white/10 bg-[#050505] relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-5" />
       <div className="max-w-[1400px] mx-auto relative z-10 px-2 md:px-6">
         <div className="text-left md:text-center mb-16 md:mb-24 flex flex-col items-start md:items-center">
