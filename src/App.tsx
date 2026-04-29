@@ -280,7 +280,7 @@ function Hero() {
             Abuja Startup Expo 2026
           </motion.div>
           
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[85px] font-black text-white text-left leading-[1.05] font-hero drop-shadow-2xl flex flex-col items-start">
+          <h1 className="text-3xl sm:text-4xl md:text-7xl lg:text-[85px] font-black text-white text-left leading-[1.05] font-hero drop-shadow-2xl flex flex-col items-start">
             <span className="block overflow-hidden pb-2">
               {Array.from("The Deal").map((char, i) => (
                 <motion.span
@@ -479,7 +479,7 @@ function ExperienceZonesSection() {
         <div className="grid lg:grid-cols-3 gap-16 mb-20">
           <div className="lg:col-span-2">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">The Experience</motion.div>
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-5xl font-black font-heading text-white leading-[1.1] mb-6 uppercase">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-3xl md:text-5xl font-black font-heading text-white leading-[1.1] mb-6 uppercase">
               Four Zones. <br/>One Purpose.
             </motion.h2>
             <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-white text-lg font-light leading-relaxed max-w-2xl">
@@ -498,13 +498,13 @@ function ExperienceZonesSection() {
                 {zone.id}
               </div>
               <div className="relative z-10 mb-auto">
-                <div className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-white/80 mb-1 md:mb-2 text-center md:text-left">ZONE {zone.id}</div>
-                <h3 className="text-sm md:text-2xl font-bold font-heading text-white mb-4 md:mb-6 tracking-tight text-center md:text-left leading-tight">{zone.title}</h3>
-                <div className="w-full flex items-center justify-center my-6 md:my-12 group-hover:scale-110 transition-transform duration-500">
+                <div className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-white/80 mb-1 md:mb-2 text-left">ZONE {zone.id}</div>
+                <h3 className="text-sm md:text-2xl font-bold font-heading text-white mb-4 md:mb-6 tracking-tight text-left leading-tight">{zone.title}</h3>
+                <div className="w-full flex items-center justify-start my-6 md:my-12 group-hover:scale-110 transition-transform duration-500">
                   {zone.icon}
                 </div>
               </div>
-              <p className="text-white font-light leading-relaxed text-[10px] md:text-sm relative z-10 text-center md:text-left">
+              <p className="text-white font-light leading-relaxed text-[10px] md:text-sm relative z-10 text-left">
                 {zone.desc}
               </p>
             </div>
@@ -555,7 +555,7 @@ function WhyAttendSection() {
         <div className="grid lg:grid-cols-12 gap-16 mb-20">
           <div className="lg:col-span-6">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">Why CONVERGE?</motion.div>
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-5xl font-black font-heading text-white leading-[1.1] mb-8">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-3xl md:text-5xl font-black font-heading text-white leading-[1.1] mb-8">
               You don't attend to listen. <br/>You attend to act.
             </motion.h2>
           </div>
@@ -594,7 +594,7 @@ function StartupShowcaseSection() {
       <div className="max-w-[1400px] mx-auto flex flex-col gap-20 px-2 md:px-6">
         <div className="text-left md:text-center flex flex-col items-start md:items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">Startup Programme</motion.div>
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-5xl md:text-6xl lg:text-7xl font-black font-heading text-white leading-[1.1] mb-8 max-w-5xl text-left md:text-center">
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-3xl md:text-6xl lg:text-7xl font-black font-heading text-white leading-[1.1] mb-8 max-w-5xl text-left md:text-center">
             Get Your Startup On The <br className="hidden md:block" />Biggest Stage In Abuja.
           </motion.h2>
           <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg text-white/90 font-light leading-relaxed mb-12 max-w-2xl text-left md:text-center">
@@ -681,7 +681,7 @@ function SpeakersSection() {
         <div className="grid lg:grid-cols-12 gap-16 mb-20">
           <div className="lg:col-span-5">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">Speakers & Guests</motion.div>
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-5xl font-black font-heading text-white leading-[1.1] mb-8">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-3xl md:text-5xl font-black font-heading text-white leading-[1.1] mb-8">
               The Voices Shaping <br/>Nigeria's Next Decade.
             </motion.h2>
             <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-white/80 font-light leading-relaxed mb-8">
@@ -789,7 +789,7 @@ function VolunteerSection() {
             <motion.div variants={textVariant} custom={0} className="text-brand-accent font-bold text-xs tracking-widest uppercase mb-4 flex items-center gap-2">
               <span className="text-lg">★</span> Volunteer at CONVERGE 2026
             </motion.div>
-            <motion.h2 variants={textVariant} custom={1} className="text-4xl md:text-5xl font-black font-heading text-white leading-[1.1] mb-8 uppercase tracking-tighter">
+            <motion.h2 variants={textVariant} custom={1} className="text-3xl md:text-5xl font-black font-heading text-white leading-[1.1] mb-8 uppercase tracking-tighter">
               Help build Nigeria's <br/>Most Important <br/>Startup Gathering.
             </motion.h2>
             <motion.div variants={textVariant} custom={2} className="space-y-6 text-lg text-white/90 font-light leading-relaxed mb-10">
@@ -918,7 +918,7 @@ function TicketsSection() {
           >
             Early bird pricing ends Sept 30, 2026
           </motion.div>
-          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-6xl font-black font-heading text-white leading-tight uppercase tracking-tighter">Choose Your <br/>Experience.</motion.h2>
+          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-3xl md:text-6xl font-black font-heading text-white leading-tight uppercase tracking-tighter">Choose Your <br/>Experience.</motion.h2>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-6">
@@ -1007,16 +1007,16 @@ function SponsorshipSection() {
       <div className="max-w-[1400px] mx-auto relative z-10 px-2 md:px-6">
         <div className="text-left md:text-center mb-16 md:mb-24 flex flex-col items-start md:items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-accent font-bold text-xs tracking-widest uppercase mb-4">Partnership & Sponsorship</motion.div>
-          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-7xl font-black font-heading text-white leading-[1.1] mb-6 uppercase tracking-tighter">Sponsors don't get visibility.<br/> They get access.</motion.h2>
+          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-3xl md:text-7xl font-black font-heading text-white leading-[1.1] mb-6 uppercase tracking-tighter">Sponsors don't get visibility.<br/> They get access.</motion.h2>
           <motion.p initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg md:text-xl text-white/80 font-light max-w-2xl mx-0 md:mx-auto">The organisations that backed Nigeria's startup ecosystem.</motion.p>
         </div>
         <div className="text-left md:text-center mb-16">
           <h3 className="text-2xl font-black font-heading text-white uppercase tracking-wider">Sponsorship Levels</h3>
-          <div className="w-20 h-1 bg-brand-gold mx-auto mt-4 rounded-full" />
+          <div className="w-20 h-1 bg-brand-gold mx-0 md:mx-auto mt-4 rounded-full" />
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {tiers.map((t, i) => (
-            <div key={i} className="bg-[#0a0a0a] border border-white/10 p-10 flex flex-col items-center text-center group hover:border-white/30 transition-all duration-500 rounded-2xl relative overflow-hidden h-[480px] justify-between">
+            <div key={i} className="bg-[#0a0a0a] border border-white/10 p-10 flex flex-col items-start text-left md:items-center md:text-center group hover:border-white/30 transition-all duration-500 rounded-2xl relative overflow-hidden h-[480px] justify-between">
               {/* Coin Container */}
               <div className="relative w-24 h-24 md:w-32 md:h-32 mb-10 perspective-1000">
                 <motion.div 
@@ -1047,9 +1047,9 @@ function SponsorshipSection() {
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-20 h-4 bg-black/60 blur-md rounded-full scale-x-150" />
               </div>
 
-              <div className="relative z-10">
+              <div className="relative z-10 text-left md:text-center">
                 <h4 className="text-2xl font-black font-heading text-white mb-6 uppercase tracking-wider">{t.tier}</h4>
-                <div className="w-12 h-1 bg-brand-gold/30 mx-auto mb-6 group-hover:w-20 group-hover:bg-brand-gold transition-all duration-500 rounded-full" />
+                <div className="w-12 h-1 bg-brand-gold/30 mx-0 md:mx-auto mb-6 group-hover:w-20 group-hover:bg-brand-gold transition-all duration-500 rounded-full" />
                 <p className="text-white font-light text-sm leading-relaxed">{t.perks}</p>
               </div>
 
@@ -1116,7 +1116,7 @@ function ClosingCTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-4xl sm:text-5xl md:text-7xl font-black mb-4 md:mb-10 font-heading leading-[1.1] tracking-tight text-white drop-shadow-2xl uppercase"
+          className="text-3xl sm:text-4xl md:text-7xl font-black mb-4 md:mb-10 font-heading leading-[1.1] tracking-tight text-white drop-shadow-2xl uppercase"
         >
           The Room Where Nigeria's Next Chapter Gets Written.
         </motion.h1>
