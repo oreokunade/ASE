@@ -21,6 +21,7 @@ import {
 
 import LogoNoBg from '../Images/Logo/Abuja Startup Expo Logo - No bg.png';
 import HeroBg from '../Images/Other/photo_2026-04-29_16-57-19.jpg';
+import HeroVideo from '../Images/Hero video.MP4';
 import CardBg1 from '../Images/Other/photo_2026-04-29_16-56-34.jpg';
 import CardBg2 from '../Images/Other/photo_2026-04-29_16-57-10.jpg';
 import CardBg3 from '../Images/Other/photo_2026-04-29_16-57-15.jpg';
@@ -250,11 +251,16 @@ function Hero() {
         <div className="absolute inset-0 bg-[#050505]/40 z-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]/60 z-10" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/60 via-transparent to-[#050505]/60 z-10" />
-        <img 
-          src={HeroBg} 
-          alt="CONVERGE 2026 Background" 
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline 
+          preload="auto"
           className="w-full h-full object-cover object-center"
-        />
+        >
+          <source src={HeroVideo} type="video/mp4" />
+        </video>
       </motion.div>
 
 
