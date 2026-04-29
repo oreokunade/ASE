@@ -152,7 +152,7 @@ function StatsSection() {
 
   return (
     <section className="bg-[#050505] border-y border-white/10 relative z-30">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 divide-x divide-y md:divide-y-0 divide-white/10 max-w-[1400px] mx-auto border-x border-white/10">
+      <div className="grid grid-cols-2 md:grid-cols-5 divide-x divide-y md:divide-y-0 divide-white/10 max-w-[1400px] mx-auto px-1 md:px-0 border-x border-white/10">
         {stats.map((s, i) => (
           <div key={i} className={`p-8 lg:p-12 text-center group hover:bg-[#0a0a0a] transition-colors flex flex-col justify-center min-h-[160px] ${i === 4 ? 'col-span-2 md:col-span-1' : ''}`}>
             <div className="text-3xl lg:text-4xl font-black font-heading text-white mb-2 group-hover:scale-105 transition-transform">
@@ -277,7 +277,7 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="text-brand-accent font-bold text-[11px] md:text-[13px] tracking-[0.2em] uppercase mb-4 md:mb-6 flex items-center gap-3"
+            className="text-brand-primary font-bold text-[11px] md:text-[13px] tracking-[0.2em] uppercase mb-2 md:mb-6 flex items-center gap-3"
           >
             Abuja Startup Expo 2026
           </motion.div>
@@ -318,7 +318,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-          className="mt-10 flex flex-col gap-8 max-w-[460px] xl:w-[460px]"
+          className="mt-4 md:mt-10 flex flex-col gap-8 max-w-[460px] xl:w-[460px]"
         >
           <div>
             <p className="text-white text-[16px] md:text-[18px] font-light leading-relaxed text-left">
@@ -327,7 +327,7 @@ function Hero() {
           </div>
           
           <div className="flex flex-col gap-3">
-            <a href="#tickets" className="group bg-white text-black hover:bg-brand-accent transition-all duration-300 w-full flex items-center justify-center gap-2 h-14 rounded-none font-bold text-[13px] uppercase tracking-widest shadow-xl hover:shadow-2xl hover:-translate-y-1">
+            <a href="#tickets" className="group bg-white text-black hover:bg-brand-primary transition-all duration-300 w-full flex items-center justify-center gap-2 h-14 rounded-none font-bold text-[13px] uppercase tracking-widest shadow-xl hover:shadow-2xl hover:-translate-y-1">
               <Ticket className="w-4 h-4 group-hover:-rotate-12 transition-transform duration-300" /> Get Your Tickets
             </a>
             <div className="flex gap-3">
@@ -476,8 +476,8 @@ function ExperienceZonesSection() {
   ];
 
   return (
-    <section id="experience" className="section-padding border-b border-white/10 bg-[#050505]">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-0">
+    <section id="experience" className="py-12 md:py-24 border-b border-white/10 bg-[#050505]">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-3 gap-16 mb-20">
           <div className="lg:col-span-2">
             <div className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">The Experience</div>
@@ -490,23 +490,23 @@ function ExperienceZonesSection() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10">
           {zones.map((zone, i) => (
             <div 
               key={i} 
-              className="bg-[#0a0a0a] p-10 flex flex-col justify-between min-h-[420px] hover:bg-[#111] transition-all group relative overflow-hidden"
+              className="bg-[#0a0a0a] p-4 md:p-10 flex flex-col justify-between min-h-[380px] md:min-h-[420px] hover:bg-[#111] transition-all group relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 p-8 text-7xl font-black font-heading text-white/5 group-hover:text-white/10 transition-colors">
                 {zone.id}
               </div>
               <div className="relative z-10 mb-auto">
-                <div className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2">ZONE {zone.id} — {zone.shortName}</div>
-                <h3 className="text-2xl font-bold font-heading text-white mb-6 tracking-tight">{zone.title}</h3>
-                <div className="w-full flex items-center justify-center my-12 group-hover:scale-110 transition-transform duration-500">
+                <div className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-white/50 mb-1 md:mb-2 text-center md:text-left">ZONE {zone.id}</div>
+                <h3 className="text-sm md:text-2xl font-bold font-heading text-white mb-4 md:mb-6 tracking-tight text-center md:text-left leading-tight">{zone.title}</h3>
+                <div className="w-full flex items-center justify-center my-6 md:my-12 group-hover:scale-110 transition-transform duration-500">
                   {zone.icon}
                 </div>
               </div>
-              <p className="text-brand-text-muted font-light leading-relaxed text-sm relative z-10">
+              <p className="text-brand-text-muted font-light leading-relaxed text-[10px] md:text-sm relative z-10 text-center md:text-left">
                 {zone.desc}
               </p>
             </div>
@@ -553,7 +553,7 @@ function WhyAttendSection() {
 
   return (
     <section className="section-padding border-b border-white/10 bg-[#080808]">
-      <div className="max-w-[1400px] mx-auto">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-12 gap-16 mb-20">
           <div className="lg:col-span-6">
             <div className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">Why CONVERGE?</div>
@@ -563,9 +563,9 @@ function WhyAttendSection() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
           {benefits.map((b, i) => (
-            <div key={i} className="group relative overflow-hidden bg-[#050505] min-h-[420px] flex flex-col p-10 lg:p-12">
+            <div key={i} className="group relative overflow-hidden bg-[#050505] min-h-[420px] flex flex-col p-6 lg:p-12">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110 opacity-30 group-hover:opacity-50 grayscale group-hover:grayscale-0"
                 style={{ backgroundImage: `url(${b.img})` }}
@@ -577,8 +577,8 @@ function WhyAttendSection() {
                   <span className="text-white/50 font-heading font-black text-2xl group-hover:text-white transition-colors">0{i+1} / 06</span>
                 </div>
                 <div>
-                  <h3 className="text-3xl font-bold font-heading text-white mb-4 pr-4">{b.title}</h3>
-                  <p className="text-white/80 font-light leading-relaxed text-sm group-hover:text-white transition-colors">{b.desc}</p>
+                  <h3 className="text-xl md:text-3xl font-bold font-heading text-white mb-4 pr-4">{b.title}</h3>
+                  <p className="text-white/80 font-light leading-relaxed text-xs md:text-sm group-hover:text-white transition-colors">{b.desc}</p>
                 </div>
               </div>
             </div>
@@ -592,7 +592,7 @@ function WhyAttendSection() {
 function StartupShowcaseSection() {
   return (
     <section id="startups" className="section-padding border-b border-white/10 bg-[#050505]">
-      <div className="max-w-[1400px] mx-auto flex flex-col gap-20">
+      <div className="max-w-[1400px] mx-auto flex flex-col gap-20 px-4 md:px-6">
         <div className="text-center flex flex-col items-center">
           <div className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">Startup Programme</div>
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-black font-heading text-white leading-[1.1] mb-8 max-w-5xl">
@@ -612,14 +612,14 @@ function StartupShowcaseSection() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {[
             { stat: "05 Min", label: "Live Pitch Slot", icon: <Mic className="w-8 h-8 text-brand-primary" /> },
             { stat: "3×3m", label: "Branded Booth", icon: <MapPin className="w-8 h-8 text-brand-primary" /> },
             { stat: "3", label: "Curated Investor Meetings", icon: <Handshake className="w-8 h-8 text-brand-primary" /> },
             { stat: "30 Min", label: "Expert Feedback Session", icon: <Users className="w-8 h-8 text-brand-primary" /> }
           ].map((item, i) => (
-            <div key={i} className="relative group p-10 flex flex-col items-center text-center justify-center rounded-2xl overflow-hidden min-h-[380px] border border-white/5 bg-[#0a0a0a] hover:border-white/20 transition-colors duration-500">
+            <div key={i} className="relative group p-6 md:p-10 flex flex-col items-center text-center justify-center rounded-2xl overflow-hidden min-h-[300px] md:min-h-[380px] border border-white/5 bg-[#0a0a0a] hover:border-white/20 transition-colors duration-500">
               {/* Glowing Background Blobs */}
               <div className="absolute -top-32 -right-32 w-64 h-64 bg-brand-primary/10 rounded-full blur-[80px] group-hover:bg-brand-primary/30 transition-colors duration-700 pointer-events-none" />
               <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-brand-accent/10 rounded-full blur-[80px] group-hover:bg-brand-accent/20 transition-colors duration-700 pointer-events-none" />
@@ -629,19 +629,19 @@ function StartupShowcaseSection() {
 
               <div className="relative z-10 flex flex-col items-center w-full">
                 {/* Icon Container with Glass Effect */}
-                <div className="w-24 h-24 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md flex items-center justify-center mb-10 group-hover:scale-110 group-hover:-translate-y-2 group-hover:bg-white/[0.08] transition-all duration-500 shadow-2xl">
+                <div className="w-16 h-16 md:w-24 md:h-24 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md flex items-center justify-center mb-6 md:mb-10 group-hover:scale-110 group-hover:-translate-y-2 group-hover:bg-white/[0.08] transition-all duration-500 shadow-2xl">
                   {item.icon}
                 </div>
                 
                 {/* Text Content */}
-                <div className="text-5xl md:text-6xl font-black font-heading text-white mb-6 tracking-tight drop-shadow-lg">
+                <div className="text-3xl md:text-5xl font-black font-heading text-white mb-4 md:mb-6 tracking-tight drop-shadow-lg">
                   {item.stat}
                 </div>
                 
                 {/* Animated Divider */}
                 <div className="w-8 h-1 bg-brand-accent mb-6 rounded-full group-hover:w-16 group-hover:bg-brand-primary transition-all duration-500" />
                 
-                <div className="text-xs uppercase tracking-widest text-white/60 font-bold leading-relaxed group-hover:text-white transition-colors duration-300">
+                <div className="text-[9px] md:text-xs uppercase tracking-widest text-white/60 font-bold leading-relaxed group-hover:text-white transition-colors duration-300">
                   {item.label}
                 </div>
               </div>
@@ -678,7 +678,7 @@ function SpeakersSection() {
 
   return (
     <section id="speakers" className="section-padding border-b border-white/10 bg-[#020202]">
-      <div className="max-w-[1400px] mx-auto">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-12 gap-16 mb-20">
           <div className="lg:col-span-5">
             <div className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">Speakers & Guests</div>
@@ -797,7 +797,7 @@ function VolunteerSection() {
               <p>Behind every great event is a team of people who chose to show up before anyone asked them to. CONVERGE 2026’s volunteer programme is for students, young professionals, and emerging ecosystem leaders who want to be part of building Nigeria’s startup moment — not just attending it.</p>
             </motion.div>
             <motion.div variants={textVariant} custom={3} className="flex flex-wrap gap-4">
-              <a href="#" className="bg-white text-black h-14 px-8 text-xs font-bold uppercase tracking-widest flex items-center rounded-sm hover:bg-brand-gold transition-colors">Apply to Volunteer</a>
+              <a href="#" className="bg-white text-black h-14 px-8 text-xs font-bold uppercase tracking-widest flex items-center rounded-sm hover:bg-brand-primary transition-colors">Apply to Volunteer</a>
             </motion.div>
           </motion.div>
           
@@ -826,7 +826,7 @@ function VolunteerSection() {
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10 mb-20 overflow-hidden rounded-xl">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10 mb-20 overflow-hidden rounded-xl">
           {roles.map((r, i) => (
             <motion.div 
               key={i} 
@@ -834,22 +834,22 @@ function VolunteerSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-[#080808] p-10 hover:bg-[#111] transition-all duration-500 relative overflow-hidden group min-h-[300px] flex flex-col justify-end"
+              className="bg-[#080808] p-6 md:p-10 hover:bg-[#111] transition-all duration-500 relative overflow-hidden group min-h-[300px] flex flex-col justify-end"
             >
               {/* Background Image on Hover */}
               <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700">
                 <img src={r.img} alt={r.title} className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" />
               </div>
               
-              <div className="text-brand-primary/10 font-black font-heading text-6xl absolute top-6 right-6 group-hover:text-brand-primary/30 transition-colors">0{i+1}</div>
-              <h4 className="text-xl font-black font-heading text-white mb-4 relative z-10 uppercase tracking-tight group-hover:text-brand-accent transition-colors">{r.title}</h4>
-              <p className="text-white/50 font-light leading-relaxed text-sm relative z-10 group-hover:text-white/80 transition-colors">{r.desc}</p>
+              <div className="text-brand-primary/10 font-black font-heading text-4xl md:text-6xl absolute top-6 right-6 group-hover:text-brand-primary/30 transition-colors">0{i+1}</div>
+              <h4 className="text-lg md:text-xl font-black font-heading text-white mb-4 relative z-10 uppercase tracking-tight group-hover:text-brand-accent transition-colors">{r.title}</h4>
+              <p className="text-white/50 font-light leading-relaxed text-xs md:text-sm relative z-10 group-hover:text-white/80 transition-colors">{r.desc}</p>
             </motion.div>
           ))}
         </div>
 
         {/* Perks */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 rounded-xl overflow-hidden">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 rounded-xl overflow-hidden">
           {[
             { title: "Volunteer Kit", desc: "Official CONVERGE gear — t-shirt, lanyard, and programme." },
             { title: "Full Access", desc: "Access to all main stage sessions and exhibition floor." },
@@ -864,8 +864,8 @@ function VolunteerSection() {
               transition={{ delay: i * 0.1 }}
               className="bg-[#0a0a0a] p-8 flex flex-col"
             >
-              <h4 className="text-xs font-black font-heading text-brand-accent mb-3 uppercase tracking-widest">{p.title}</h4>
-              <p className="text-white/40 font-light text-xs leading-relaxed">{p.desc}</p>
+              <h4 className="text-[10px] font-black font-heading text-brand-accent mb-3 uppercase tracking-widest">{p.title}</h4>
+              <p className="text-white/40 font-light text-[11px] leading-relaxed">{p.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -908,7 +908,7 @@ function TicketsSection() {
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-[1400px] mx-auto relative z-10 px-6 w-full">
+      <div className="max-w-[1400px] mx-auto relative z-10 px-1 md:px-6 w-full">
         <div className="text-center mb-16">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -929,10 +929,10 @@ function TicketsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className={`p-8 lg:p-10 flex flex-col bg-[#0a0a0a] border border-white/5 relative overflow-hidden group rounded-[32px] hover:border-white/20 transition-all duration-500 hover:-translate-y-2 ${t.popular ? 'ring-2 ring-brand-accent ring-offset-4 ring-offset-[#050505]' : ''}`}
+              className={`p-8 lg:p-10 flex flex-col bg-[#0a0a0a] border border-white/5 relative overflow-hidden group rounded-[32px] hover:border-white/20 transition-all duration-500 hover:-translate-y-2 ${t.popular ? 'ring-2 ring-brand-primary ring-offset-4 ring-offset-[#050505]' : ''}`}
             >
               {t.popular && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-brand-accent px-6 py-1.5 text-[9px] font-bold uppercase tracking-widest text-black rounded-b-xl shadow-lg">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-brand-primary px-6 py-1.5 text-[9px] font-bold uppercase tracking-widest text-white rounded-b-xl shadow-lg">
                   Most Popular
                 </div>
               )}
@@ -959,7 +959,7 @@ function TicketsSection() {
                 ))}
               </ul>
               
-              <button className={`w-full py-5 text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 rounded-xl relative overflow-hidden group/btn ${t.popular ? 'bg-brand-accent text-black hover:bg-white' : 'bg-white text-black hover:bg-brand-accent'}`}>
+              <button className={`w-full py-5 text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 rounded-xl relative overflow-hidden group/btn ${t.popular ? 'bg-brand-primary text-white hover:bg-white hover:text-black' : 'bg-white text-black hover:bg-brand-primary'}`}>
                 <span className="relative z-10">{t.cta}</span>
               </button>
 
@@ -1004,7 +1004,7 @@ function SponsorshipSection() {
   return (
     <section id="sponsors" className="section-padding border-b border-white/10 bg-[#050505] relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-5" />
-      <div className="max-w-[1400px] mx-auto relative z-10">
+      <div className="max-w-[1400px] mx-auto relative z-10 px-4 md:px-6">
         <div className="text-center mb-24">
           <div className="text-brand-accent font-bold text-xs tracking-widest uppercase mb-4">Partnership & Sponsorship</div>
           <h2 className="text-4xl md:text-7xl font-black font-heading text-white leading-[1.1] mb-12 uppercase">
@@ -1016,7 +1016,7 @@ function SponsorshipSection() {
           <h3 className="text-2xl font-black font-heading text-white uppercase tracking-wider">Sponsorship Levels</h3>
           <div className="w-20 h-1 bg-brand-gold mx-auto mt-4 rounded-full" />
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {tiers.map((t, i) => (
             <div key={i} className="bg-[#0a0a0a] border border-white/10 p-10 flex flex-col items-center text-center group hover:border-white/30 transition-all duration-500 rounded-2xl relative overflow-hidden h-[480px] justify-between">
               {/* Coin Container */}
@@ -1105,12 +1105,15 @@ function ClosingCTASection() {
       <div className="absolute inset-0 bg-brand-primary/20 mix-blend-multiply z-[2]" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-[3]" />
 
-      <div className="max-w-5xl mx-auto text-center relative z-10">
-        <h2 className="text-4xl sm:text-5xl md:text-7xl font-black mb-10 font-heading leading-[1.1] tracking-tight text-white drop-shadow-2xl">
+      <div className="max-w-5xl mx-auto text-center relative z-10 px-6">
+        <div className="inline-block mb-2 md:mb-4 px-4 py-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm text-[10px] font-bold uppercase tracking-[0.2em] text-white">
+          Abuja Startup Expo 2026
+        </div>
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-4 md:mb-10 font-heading leading-[1.1] tracking-tight text-white drop-shadow-2xl uppercase">
           The Room Where Nigeria's Next Chapter Gets Written.
-        </h2>
+        </h1>
 
-        <p className="text-lg md:text-xl font-light mb-12 max-w-2xl mx-auto leading-relaxed text-white/90 drop-shadow-lg">
+        <p className="text-lg md:text-xl font-light mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed text-white/90 drop-shadow-lg">
           This is where the deal gets done. Where the introduction becomes a partnership. Where the pitch becomes a term sheet.
         </p>
         
