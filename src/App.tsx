@@ -158,7 +158,7 @@ function StatsSection() {
             <div className="text-3xl lg:text-4xl font-black font-heading text-white mb-2 group-hover:scale-105 transition-transform">
               <ScrambleText text={s.value} />
             </div>
-            <div className="text-[10px] uppercase tracking-widest text-brand-text-muted font-bold">{s.label}</div>
+            <div className="text-[10px] uppercase tracking-widest text-white font-bold">{s.label}</div>
           </div>
         ))}
       </div>
@@ -482,7 +482,7 @@ function ExperienceZonesSection() {
             <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-5xl font-black font-heading text-white leading-[1.1] mb-6 uppercase">
               Four Zones. <br/>One Purpose.
             </motion.h2>
-            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-brand-text-muted text-lg font-light leading-relaxed max-w-2xl">
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-white text-lg font-light leading-relaxed max-w-2xl">
               CONVERGE 2026 is structured into four high-intent spaces, each built around a specific kind of value creation. Every hour you spend here is pointed at an outcome.
             </motion.p>
           </div>
@@ -498,13 +498,13 @@ function ExperienceZonesSection() {
                 {zone.id}
               </div>
               <div className="relative z-10 mb-auto">
-                <div className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-white/50 mb-1 md:mb-2 text-center md:text-left">ZONE {zone.id}</div>
+                <div className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-white/80 mb-1 md:mb-2 text-center md:text-left">ZONE {zone.id}</div>
                 <h3 className="text-sm md:text-2xl font-bold font-heading text-white mb-4 md:mb-6 tracking-tight text-center md:text-left leading-tight">{zone.title}</h3>
                 <div className="w-full flex items-center justify-center my-6 md:my-12 group-hover:scale-110 transition-transform duration-500">
                   {zone.icon}
                 </div>
               </div>
-              <p className="text-brand-text-muted font-light leading-relaxed text-[10px] md:text-sm relative z-10 text-center md:text-left">
+              <p className="text-white font-light leading-relaxed text-[10px] md:text-sm relative z-10 text-center md:text-left">
                 {zone.desc}
               </p>
             </div>
@@ -573,7 +573,7 @@ function WhyAttendSection() {
               
               <div className="relative z-10 flex flex-col h-full justify-between">
                 <div className="flex justify-end items-center mb-8 pb-6 border-b border-white/20">
-                  <span className="text-white/50 font-heading font-black text-2xl group-hover:text-white transition-colors">0{i+1} / 06</span>
+                  <span className="text-white/80 font-heading font-black text-2xl group-hover:text-white transition-colors">0{i+1} / 06</span>
                 </div>
                 <div>
                   <h3 className="text-xl md:text-3xl font-bold font-heading text-white mb-4 pr-4 leading-tight">{b.title}</h3>
@@ -597,7 +597,7 @@ function StartupShowcaseSection() {
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-5xl md:text-6xl lg:text-7xl font-black font-heading text-white leading-[1.1] mb-8 max-w-5xl text-left md:text-center">
             Get Your Startup On The <br className="hidden md:block" />Biggest Stage In Abuja.
           </motion.h2>
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg text-white/70 font-light leading-relaxed mb-12 max-w-2xl text-left md:text-center">
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg text-white/90 font-light leading-relaxed mb-12 max-w-2xl text-left md:text-center">
             Selected startups gain more than a booth. They gain access, visibility, and the momentum that changes trajectories. We look for startups solving real problems, ready for investor scrutiny, and hungry to scale.
           </motion.p>
           
@@ -792,7 +792,7 @@ function VolunteerSection() {
             <motion.h2 variants={textVariant} custom={1} className="text-4xl md:text-5xl font-black font-heading text-white leading-[1.1] mb-8 uppercase tracking-tighter">
               Help build Nigeria's <br/>Most Important <br/>Startup Gathering.
             </motion.h2>
-            <motion.div variants={textVariant} custom={2} className="space-y-6 text-lg text-white/70 font-light leading-relaxed mb-10">
+            <motion.div variants={textVariant} custom={2} className="space-y-6 text-lg text-white/90 font-light leading-relaxed mb-10">
               <p>Behind every great event is a team of people who chose to show up before anyone asked them to. CONVERGE 2026’s volunteer programme is for students, young professionals, and emerging ecosystem leaders who want to be part of building Nigeria’s startup moment — not just attending it.</p>
             </motion.div>
             <motion.div variants={textVariant} custom={3} className="flex flex-wrap gap-4">
@@ -843,7 +843,7 @@ function VolunteerSection() {
               
               <div className="text-brand-primary/10 font-black font-heading text-4xl md:text-6xl absolute top-6 right-6 group-hover:text-brand-primary/30 transition-colors">0{i+1}</div>
               <h4 className="text-lg md:text-xl font-black font-heading text-white mb-4 relative z-10 uppercase tracking-tight group-hover:text-brand-accent transition-colors">{r.title}</h4>
-              <p className="text-white/50 font-light leading-relaxed text-xs md:text-sm relative z-10 group-hover:text-white/80 transition-colors">{r.desc}</p>
+              <p className="text-white/80 font-light leading-relaxed text-xs md:text-sm relative z-10 group-hover:text-white/80 transition-colors">{r.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -948,7 +948,7 @@ function TicketsSection() {
               
               <div className="w-full h-px bg-white/10 mb-8" />
 
-              <ul className="space-y-4 mb-10 flex-grow text-[13px] text-white/70 font-light">
+              <ul className="space-y-4 mb-10 flex-grow text-[13px] text-white/90 font-light">
                 {t.features.map((f, j) => (
                   <li key={j} className="flex items-start gap-3">
                     <div className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${t.popular ? 'bg-brand-accent/20' : 'bg-white/10'}`}>
@@ -1008,7 +1008,7 @@ function SponsorshipSection() {
         <div className="text-left md:text-center mb-16 md:mb-24 flex flex-col items-start md:items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-accent font-bold text-xs tracking-widest uppercase mb-4">Partnership & Sponsorship</motion.div>
           <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-7xl font-black font-heading text-white leading-[1.1] mb-6 uppercase tracking-tighter">Sponsors don't get visibility.<br/> They get access.</motion.h2>
-          <motion.p initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg md:text-xl text-white/50 font-light max-w-2xl mx-0 md:mx-auto">The organisations that backed Nigeria's startup ecosystem.</motion.p>
+          <motion.p initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg md:text-xl text-white/80 font-light max-w-2xl mx-0 md:mx-auto">The organisations that backed Nigeria's startup ecosystem.</motion.p>
         </div>
         <div className="text-left md:text-center mb-16">
           <h3 className="text-2xl font-black font-heading text-white uppercase tracking-wider">Sponsorship Levels</h3>
@@ -1050,7 +1050,7 @@ function SponsorshipSection() {
               <div className="relative z-10">
                 <h4 className="text-2xl font-black font-heading text-white mb-6 uppercase tracking-wider">{t.tier}</h4>
                 <div className="w-12 h-1 bg-brand-gold/30 mx-auto mb-6 group-hover:w-20 group-hover:bg-brand-gold transition-all duration-500 rounded-full" />
-                <p className="text-brand-text-muted font-light text-sm leading-relaxed">{t.perks}</p>
+                <p className="text-white font-light text-sm leading-relaxed">{t.perks}</p>
               </div>
 
               {/* Hover background effect */}
@@ -1172,7 +1172,7 @@ function Footer() {
             
             <div className="flex gap-4">
               {['LinkedIn', 'Twitter/X', 'Instagram', 'YouTube'].map((social, i) => (
-                <a key={i} href="#" className="text-xs font-bold uppercase tracking-widest text-brand-text-muted hover:text-white transition-colors border border-white/10 px-4 py-2 hover:border-white/30 rounded-sm">
+                <a key={i} href="#" className="text-xs font-bold uppercase tracking-widest text-white hover:text-white transition-colors border border-white/10 px-4 py-2 hover:border-white/30 rounded-sm">
                   {social}
                 </a>
               ))}
@@ -1181,7 +1181,7 @@ function Footer() {
           
           <div className="lg:col-span-2 lg:col-start-7">
             <h4 className="font-bold text-white mb-8 text-xs uppercase tracking-widest border-b border-white/10 pb-4 inline-block">Attend</h4>
-            <ul className="space-y-4 text-sm text-brand-text-muted font-light tracking-wide">
+            <ul className="space-y-4 text-sm text-white font-light tracking-wide">
               <li><a href="#tickets" className="hover:text-white transition-colors">Get Tickets</a></li>
               <li><a href="#startups" className="hover:text-white transition-colors">Startup Pass</a></li>
               <li><a href="#deal-room" className="hover:text-white transition-colors">Deal Room</a></li>
@@ -1191,7 +1191,7 @@ function Footer() {
 
           <div className="lg:col-span-2">
             <h4 className="font-bold text-white mb-8 text-xs uppercase tracking-widest border-b border-white/10 pb-4 inline-block">Experience</h4>
-            <ul className="space-y-4 text-sm text-brand-text-muted font-light tracking-wide">
+            <ul className="space-y-4 text-sm text-white font-light tracking-wide">
               <li><a href="#experience" className="hover:text-white transition-colors">Capital Zone</a></li>
               <li><a href="#experience" className="hover:text-white transition-colors">Builders Zone</a></li>
               <li><a href="#experience" className="hover:text-white transition-colors">Enterprise Zone</a></li>
