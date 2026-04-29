@@ -247,6 +247,7 @@ function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden bg-[#050505] pt-32 md:pt-[160px]">
       {/* Background Image */}
+      <motion.div style={{ y, opacity }} className="absolute inset-0 z-0 origin-bottom bg-[#050505]">
         {/* Minimal overlays for max video visibility */}
         <div className="absolute inset-0 bg-black/10 z-10" />
         <video 
@@ -553,8 +554,6 @@ function WhyAttendSection() {
       <div className="max-w-[1400px] mx-auto px-2 md:px-6">
         <div className="grid lg:grid-cols-12 gap-16 mb-20">
           <div className="lg:col-span-6">
-            <div className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">Why CONVERGE?</div>
-            <h2 className="text-4xl md:text-5xl font-black font-heading text-white leading-[1.1] mb-8">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">Why CONVERGE?</motion.div>
             <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-5xl font-black font-heading text-white leading-[1.1] mb-8">
               You don't attend to listen. <br/>You attend to act.
