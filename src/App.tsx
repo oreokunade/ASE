@@ -248,16 +248,18 @@ function Hero() {
     <section className="relative min-h-screen flex flex-col overflow-hidden bg-[#050505] pt-32 md:pt-[160px]">
       {/* Background Image */}
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0 origin-bottom bg-[#050505]">
-        <div className="absolute inset-0 bg-[#050505]/40 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]/60 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/60 via-transparent to-[#050505]/60 z-10" />
+        {/* Lighter overlays for better video visibility */}
+        <div className="absolute inset-0 bg-[#050505]/20 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]/30 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/30 via-transparent to-[#050505]/30 z-10" />
         <video 
           autoPlay 
           muted 
           loop 
           playsInline 
+          webkit-playsinline="true"
           preload="auto"
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover object-center scale-105"
         >
           <source src={HeroVideo} type="video/mp4" />
         </video>
