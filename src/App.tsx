@@ -247,11 +247,8 @@ function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden bg-[#050505] pt-32 md:pt-[160px]">
       {/* Background Image */}
-      <motion.div style={{ y, opacity }} className="absolute inset-0 z-0 origin-bottom bg-[#050505]">
-        {/* Lighter overlays for better video visibility */}
-        <div className="absolute inset-0 bg-[#050505]/20 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]/30 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/30 via-transparent to-[#050505]/30 z-10" />
+        {/* Minimal overlays for max video visibility */}
+        <div className="absolute inset-0 bg-black/10 z-10" />
         <video 
           autoPlay 
           muted 
@@ -477,16 +474,16 @@ function ExperienceZonesSection() {
 
   return (
     <section id="experience" className="py-12 md:py-24 border-b border-white/10 bg-[#050505]">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-6">
+      <div className="max-w-[1400px] mx-auto px-2 md:px-6">
         <div className="grid lg:grid-cols-3 gap-16 mb-20">
           <div className="lg:col-span-2">
-            <div className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">The Experience</div>
-            <h2 className="text-4xl md:text-5xl font-black font-heading text-white leading-[1.1] mb-6 uppercase">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">The Experience</motion.div>
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-5xl font-black font-heading text-white leading-[1.1] mb-6 uppercase">
               Four Zones. <br/>One Purpose.
-            </h2>
-            <p className="text-brand-text-muted text-lg font-light leading-relaxed max-w-2xl">
+            </motion.h2>
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-brand-text-muted text-lg font-light leading-relaxed max-w-2xl">
               CONVERGE 2026 is structured into four high-intent spaces, each built around a specific kind of value creation. Every hour you spend here is pointed at an outcome.
-            </p>
+            </motion.p>
           </div>
         </div>
 
@@ -553,13 +550,15 @@ function WhyAttendSection() {
 
   return (
     <section className="section-padding border-b border-white/10 bg-[#080808]">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-6">
+      <div className="max-w-[1400px] mx-auto px-2 md:px-6">
         <div className="grid lg:grid-cols-12 gap-16 mb-20">
           <div className="lg:col-span-6">
             <div className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">Why CONVERGE?</div>
             <h2 className="text-4xl md:text-5xl font-black font-heading text-white leading-[1.1] mb-8">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">Why CONVERGE?</motion.div>
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-5xl font-black font-heading text-white leading-[1.1] mb-8">
               You don't attend to listen. <br/>You attend to act.
-            </h2>
+            </motion.h2>
           </div>
         </div>
 
@@ -567,18 +566,16 @@ function WhyAttendSection() {
           {benefits.map((b, i) => (
             <div key={i} className="group relative overflow-hidden bg-[#050505] min-h-[420px] flex flex-col p-6 lg:p-12">
               <div 
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110 opacity-30 group-hover:opacity-50 grayscale group-hover:grayscale-0"
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110 opacity-100"
                 style={{ backgroundImage: `url(${b.img})` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/90 to-transparent transition-opacity duration-500" />
-              
               <div className="relative z-10 flex flex-col h-full justify-between">
                 <div className="flex justify-end items-center mb-8 pb-6 border-b border-white/20">
                   <span className="text-white/50 font-heading font-black text-2xl group-hover:text-white transition-colors">0{i+1} / 06</span>
                 </div>
                 <div>
-                  <h3 className="text-xl md:text-3xl font-bold font-heading text-white mb-4 pr-4">{b.title}</h3>
-                  <p className="text-white/80 font-light leading-relaxed text-xs md:text-sm group-hover:text-white transition-colors">{b.desc}</p>
+                  <h3 className="text-xl md:text-3xl font-bold font-heading text-white mb-4 pr-4 leading-tight">{b.title}</h3>
+                  <p className="text-white/80 font-light leading-relaxed text-[11px] md:text-sm group-hover:text-white transition-colors">{b.desc}</p>
                 </div>
               </div>
             </div>
@@ -592,17 +589,17 @@ function WhyAttendSection() {
 function StartupShowcaseSection() {
   return (
     <section id="startups" className="section-padding border-b border-white/10 bg-[#050505]">
-      <div className="max-w-[1400px] mx-auto flex flex-col gap-20 px-4 md:px-6">
-        <div className="text-center flex flex-col items-center">
-          <div className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">Startup Programme</div>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-black font-heading text-white leading-[1.1] mb-8 max-w-5xl">
+      <div className="max-w-[1400px] mx-auto flex flex-col gap-20 px-2 md:px-6">
+        <div className="text-left md:text-center flex flex-col items-start md:items-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">Startup Programme</motion.div>
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-5xl md:text-6xl lg:text-7xl font-black font-heading text-white leading-[1.1] mb-8 max-w-5xl text-left md:text-center">
             Get Your Startup On The <br className="hidden md:block" />Biggest Stage In Abuja.
-          </h2>
-          <p className="text-lg text-white/70 font-light leading-relaxed mb-12 max-w-2xl">
+          </motion.h2>
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg text-white/70 font-light leading-relaxed mb-12 max-w-2xl text-left md:text-center">
             Selected startups gain more than a booth. They gain access, visibility, and the momentum that changes trajectories. We look for startups solving real problems, ready for investor scrutiny, and hungry to scale.
-          </p>
+          </motion.p>
           
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-start md:justify-center gap-4">
             <a href="#" className="btn-primary btn-white h-14 px-8 text-xs rounded-sm">
               Apply as a Startup
             </a>
@@ -678,19 +675,19 @@ function SpeakersSection() {
 
   return (
     <section id="speakers" className="section-padding border-b border-white/10 bg-[#020202]">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-6">
+      <div className="max-w-[1400px] mx-auto px-2 md:px-6">
         <div className="grid lg:grid-cols-12 gap-16 mb-20">
           <div className="lg:col-span-5">
-            <div className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">Speakers & Guests</div>
-            <h2 className="text-4xl md:text-5xl font-black font-heading text-white leading-[1.1] mb-8">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4">Speakers & Guests</motion.div>
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-5xl font-black font-heading text-white leading-[1.1] mb-8">
               The Voices Shaping <br/>Nigeria's Next Decade.
-            </h2>
-            <p className="text-white/80 font-light leading-relaxed mb-8">
+            </motion.h2>
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-white/80 font-light leading-relaxed mb-8">
               CONVERGE doesn’t fill a stage. Every speaker is selected because they have something specific to offer the room — a network to open, capital to deploy, or insight earned from building the real thing.
-            </p>
-            <p className="text-white/80 font-light leading-relaxed mb-10">
+            </motion.p>
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="text-white/80 font-light leading-relaxed mb-10">
               Expect founders who’ve raised Series A and beyond, managing partners from leading VC firms, senior government officials, corporate innovation leads, and international ecosystem builders with African market expertise.
-            </p>
+            </motion.p>
             <a href="#" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-accent hover:text-white transition-colors">
               Apply as a Speaker <ArrowUpRight className="w-4 h-4" />
             </a>
@@ -728,7 +725,7 @@ function SpeakersSection() {
                 <img 
                   src={speaker.image} 
                   alt={speaker.name} 
-                  className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
                 <div className="absolute bottom-0 left-0 w-full p-4 md:p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
@@ -837,8 +834,8 @@ function VolunteerSection() {
               className="bg-[#080808] p-6 md:p-10 hover:bg-[#111] transition-all duration-500 relative overflow-hidden group min-h-[300px] flex flex-col justify-end"
             >
               {/* Background Image on Hover */}
-              <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700">
-                <img src={r.img} alt={r.title} className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" />
+              <div className="absolute inset-0 z-0 opacity-80 transition-opacity duration-700">
+                <img src={r.img} alt={r.title} className="w-full h-full object-cover transition-transform duration-1000" />
               </div>
               
               <div className="text-brand-primary/10 font-black font-heading text-4xl md:text-6xl absolute top-6 right-6 group-hover:text-brand-primary/30 transition-colors">0{i+1}</div>
@@ -909,7 +906,7 @@ function TicketsSection() {
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto relative z-10 px-1 md:px-6 w-full">
-        <div className="text-center mb-16">
+        <div className="text-left md:text-center mb-16">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -918,7 +915,7 @@ function TicketsSection() {
           >
             Early bird pricing ends Sept 30, 2026
           </motion.div>
-          <h2 className="text-4xl md:text-6xl font-black font-heading text-white leading-tight uppercase tracking-tighter">Choose Your <br/>Experience.</h2>
+          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-6xl font-black font-heading text-white leading-tight uppercase tracking-tighter">Choose Your <br/>Experience.</motion.h2>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-6">
@@ -1004,15 +1001,13 @@ function SponsorshipSection() {
   return (
     <section id="sponsors" className="section-padding border-b border-white/10 bg-[#050505] relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-5" />
-      <div className="max-w-[1400px] mx-auto relative z-10 px-4 md:px-6">
-        <div className="text-center mb-24">
-          <div className="text-brand-accent font-bold text-xs tracking-widest uppercase mb-4">Partnership & Sponsorship</div>
-          <h2 className="text-4xl md:text-7xl font-black font-heading text-white leading-[1.1] mb-12 uppercase">
-            Sponsors don't get visibility.<br/>
-            They get access.
-          </h2>
+      <div className="max-w-[1400px] mx-auto relative z-10 px-2 md:px-6">
+        <div className="text-left md:text-center mb-16 md:mb-24 flex flex-col items-start md:items-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-accent font-bold text-xs tracking-widest uppercase mb-4">Partnership & Sponsorship</motion.div>
+          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-7xl font-black font-heading text-white leading-[1.1] mb-6 uppercase tracking-tighter">Sponsors don't get visibility.<br/> They get access.</motion.h2>
+          <motion.p initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg md:text-xl text-white/50 font-light max-w-2xl mx-0 md:mx-auto">The organisations that backed Nigeria's startup ecosystem.</motion.p>
         </div>
-        <div className="text-center mb-16">
+        <div className="text-left md:text-center mb-16">
           <h3 className="text-2xl font-black font-heading text-white uppercase tracking-wider">Sponsorship Levels</h3>
           <div className="w-20 h-1 bg-brand-gold mx-auto mt-4 rounded-full" />
         </div>
@@ -1090,9 +1085,9 @@ function SponsorshipSection() {
 function ClosingCTASection() {
   return (
     <section className="min-h-screen flex items-center justify-center py-20 px-6 bg-black relative overflow-hidden text-white">
-      {/* High-Impact Image Background */}
+      {/* High-Impact Image Background - No Grayscale, More Visible */}
       <div 
-        className="absolute inset-0 z-0 opacity-70 grayscale-[30%]"
+        className="absolute inset-0 z-0 opacity-90"
         style={{ 
           backgroundImage: `url(${CardBg2})`, 
           backgroundSize: 'cover', 
@@ -1100,22 +1095,38 @@ function ClosingCTASection() {
         }} 
       />
       
-      {/* Multi-layered Overlays for depth and readability */}
-      <div className="absolute inset-0 bg-black/60 z-[1]" />
-      <div className="absolute inset-0 bg-brand-primary/20 mix-blend-multiply z-[2]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-[3]" />
+      {/* Reduced Overlays */}
+      <div className="absolute inset-0 bg-black/40 z-[1]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 z-[2]" />
 
-      <div className="max-w-5xl mx-auto text-center relative z-10 px-6">
-        <div className="inline-block mb-2 md:mb-4 px-4 py-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm text-[10px] font-bold uppercase tracking-[0.2em] text-white">
+      <div className="max-w-5xl mx-auto text-left md:text-center relative z-10 px-6 flex flex-col items-start md:items-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="inline-block mb-4 px-4 py-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm text-[10px] font-bold uppercase tracking-[0.2em] text-white"
+        >
           Abuja Startup Expo 2026
-        </div>
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-4 md:mb-10 font-heading leading-[1.1] tracking-tight text-white drop-shadow-2xl uppercase">
+        </motion.div>
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-4xl sm:text-5xl md:text-7xl font-black mb-4 md:mb-10 font-heading leading-[1.1] tracking-tight text-white drop-shadow-2xl uppercase"
+        >
           The Room Where Nigeria's Next Chapter Gets Written.
-        </h1>
+        </motion.h1>
 
-        <p className="text-lg md:text-xl font-light mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed text-white/90 drop-shadow-lg">
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-lg md:text-xl font-light mb-8 md:mb-12 max-w-2xl mx-0 md:mx-auto leading-relaxed text-white/90 drop-shadow-lg"
+        >
           This is where the deal gets done. Where the introduction becomes a partnership. Where the pitch becomes a term sheet.
-        </p>
+        </motion.p>
         
         <div className="flex flex-col sm:flex-row justify-center items-center gap-8 mb-12 text-[10px] font-bold uppercase tracking-[0.2em] border-y border-white/20 py-10 backdrop-blur-md bg-white/5 rounded-sm">
           <span>Nov 14, 2026</span>
