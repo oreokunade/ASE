@@ -330,7 +330,7 @@ function Hero() {
 function ManifestoSection() {
   return (
     <section id="about" className="section-padding border-b border-white/10 bg-[#020202]">
-      <div className="max-w-[1400px] mx-auto">
+      <div className="max-w-[1400px] mx-auto px-2 md:px-6">
         <div className="text-brand-primary font-black text-xs md:text-sm tracking-[0.3em] uppercase mb-4">What Is CONVERGE?</div>
         
         <div className="grid lg:grid-cols-12 gap-16 mb-24 items-center">
@@ -481,7 +481,7 @@ function ExperienceZonesSection() {
 
   return (
     <section id="experience" className="py-8 md:py-24 border-b border-white/10 bg-[#050505]">
-      <div className="max-w-[1550px] mx-auto px-2 md:px-6">
+      <div className="max-w-[1400px] mx-auto px-2 md:px-6">
         <div className="grid lg:grid-cols-12 gap-10 md:gap-16 mb-20 items-end">
           <div className="lg:col-span-7">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-black text-xs md:text-sm tracking-[0.3em] uppercase mb-4">The Experience</motion.div>
