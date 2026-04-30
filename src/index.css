@@ -5,8 +5,8 @@
 
 @theme {
   --font-sans: "Mona Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-heading: "Plus Jakarta Sans", "Helvetica Neue", Helvetica, sans-serif;
-  --font-hero: "Plus Jakarta Sans", "Helvetica Neue", Helvetica, sans-serif;
+  --font-heading: "Bricolage Grotesque", "Plus Jakarta Sans", sans-serif;
+  --font-hero: "Bricolage Grotesque", "Plus Jakarta Sans", sans-serif;
   
   --color-brand-bg: #050505; /* True dark for that premium feel */
   --color-brand-surface: #0a0a0a;
@@ -36,7 +36,7 @@
 }
 
 .btn-white {
-  @apply bg-white text-black hover:bg-gray-200;
+  @apply bg-brand-primary text-white hover:bg-orange-600 shadow-lg shadow-brand-primary/20;
 }
 
 .btn-accent {
