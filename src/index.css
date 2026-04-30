@@ -21,6 +21,11 @@
   --animate-marquee: marquee 35s linear infinite;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px; /* Accounts for fixed navbar height */
+}
+
 @layer base {
   body {
     @apply bg-brand-bg text-brand-dark font-sans antialiased;

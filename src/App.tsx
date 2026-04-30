@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, animate, useMotionValue, useInView } from 'motion/react';
 import { 
+  ArrowUp,
   ArrowUpRight, 
   MapPin, 
   ChevronRight,
@@ -130,6 +131,46 @@ function ScrambleText({ text }: { text: string }) {
   );
 }
 
+function BackToTop() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.scrollY > 500) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
+  return (
+    <motion.button
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ 
+        opacity: isVisible ? 1 : 0, 
+        scale: isVisible ? 1 : 0,
+        y: isVisible ? 0 : 20
+      }}
+      onClick={scrollToTop}
+      className={`fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[60] bg-brand-primary text-white p-3 md:p-4 rounded-none shadow-2xl hover:bg-orange-600 transition-all group ${!isVisible ? 'pointer-events-none' : ''}`}
+      aria-label="Back to top"
+    >
+      <ArrowUp className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-y-1 transition-transform" />
+    </motion.button>
+  );
+}
+
 export default function App() {
   return (
     <div className="selection:bg-brand-primary selection:text-white bg-brand-bg text-brand-dark min-h-screen bg-grid-pattern overflow-hidden font-sans">
@@ -147,6 +188,7 @@ export default function App() {
       <SponsorshipSection />
       <ClosingCTASection />
       <Footer />
+      <BackToTop />
     </div>
   );
 }
@@ -198,7 +240,7 @@ function Navbar() {
           <img 
             src={LogoNoBg} 
             alt="CONVERGE 2026" 
-            className="h-[48px] md:h-[72px] object-contain filter invert" 
+            className="h-[72px] md:h-[86px] object-contain filter invert" 
           />
         </a>
       </div>
@@ -330,7 +372,7 @@ function Hero() {
 function ManifestoSection() {
   return (
     <section id="about" className="section-padding border-b border-white/10 bg-[#020202]">
-      <div className="max-w-[1400px] mx-auto px-2 md:px-6">
+      <div className="max-w-[1400px] mx-auto px-6">
         <div className="text-brand-primary font-black text-xs md:text-sm tracking-[0.3em] uppercase mb-4">What Is CONVERGE?</div>
         
         <div className="grid lg:grid-cols-12 gap-16 mb-24 items-center">
@@ -481,7 +523,7 @@ function ExperienceZonesSection() {
 
   return (
     <section id="experience" className="py-8 md:py-24 border-b border-white/10 bg-[#050505]">
-      <div className="max-w-[1400px] mx-auto px-2 md:px-6">
+      <div className="max-w-[1400px] mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-10 md:gap-16 mb-20 items-end">
           <div className="lg:col-span-7">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-black text-xs md:text-sm tracking-[0.3em] uppercase mb-4">The Experience</motion.div>
@@ -639,7 +681,7 @@ function WhyAttendSection() {
 
   return (
     <section className="py-8 md:py-24 border-b border-white/10 bg-[#080808]">
-      <div className="max-w-[1400px] mx-auto px-2 md:px-6">
+      <div className="max-w-[1400px] mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-16 mb-20 items-start relative">
           <div className="lg:col-span-6 lg:sticky lg:top-32 lg:self-start">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-black text-xs md:text-sm tracking-[0.3em] uppercase mb-4">Community & Impact</motion.div>
@@ -746,7 +788,7 @@ function StartupShowcaseSection() {
 
   return (
     <section id="startups" className="py-8 md:py-24 border-b border-white/10 bg-[#050505]">
-      <div className="max-w-[1400px] mx-auto flex flex-col gap-20 px-2 md:px-6">
+      <div className="max-w-[1400px] mx-auto flex flex-col gap-20 px-6">
         <div className="grid lg:grid-cols-12 gap-10 md:gap-20 items-center">
           <div className="lg:col-span-7 order-2 lg:order-1 flex flex-col items-start text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-black text-sm tracking-[0.3em] uppercase mb-4">Startup Programme</motion.div>
@@ -840,7 +882,7 @@ function SpeakersSection() {
     { name: "Barr. Emmanuel Edet", role: "Ag. Director, NITDA", image: Speaker2 },
     { name: "Damilola Victoria Alabi", role: "Coordinator, Intellectual property lawyers association of Nigeria", image: Speaker3 },
     { name: "Hart Shirley-Grace", role: "Founder, FoundHer", image: Speaker4 },
-    { name: "Joel Amawhe", role: "Founder, Bizthom", image: Speaker5 },
+    { name: "Joel Amawhe", role: "Founder, Bizthom", image: Speaker5, position: "object-right" },
     { name: "Nelson Agbo", role: "Abuja TechBro", image: Speaker6 },
     { name: "Omu Obilor", role: "Managing Partner, Afrileaplabs", image: Speaker7 },
     { name: "Remy Chukwunyere", role: "Executive Director, Ugumba", image: Speaker8 },
@@ -874,7 +916,7 @@ function SpeakersSection() {
 
   return (
     <section id="speakers" className="py-8 md:py-24 border-b border-white/10 bg-[#020202]">
-      <div className="max-w-[1400px] mx-auto px-2 md:px-6">
+      <div className="max-w-[1400px] mx-auto px-6">
         {/* Narrative Header Row */}
         <div className="grid lg:grid-cols-12 gap-10 md:gap-16 mb-16 md:mb-20">
           <div className="lg:col-span-7 order-2 lg:order-1">
@@ -923,7 +965,7 @@ function SpeakersSection() {
               </div>
             </motion.div>
           </div>
-          <div className="lg:col-span-5 order-1 lg:order-2 hidden lg:block">
+          <div className="lg:col-span-5 order-1 lg:order-2">
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -964,7 +1006,7 @@ function SpeakersSection() {
                 <img 
                   src={speaker.image} 
                   alt={speaker.name} 
-                  className="w-full h-full object-cover object-top transition-all duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                  className={`w-full h-full object-cover ${speaker.position || 'object-top'} transition-all duration-700 group-hover:scale-110`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-100 transition-all duration-500" />
                 <div className="absolute bottom-0 left-0 w-full p-4 md:p-6 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
@@ -1150,7 +1192,7 @@ function VolunteerSection() {
 
   return (
     <section id="volunteer" className="py-8 md:py-24 border-b border-white/10 bg-[#050505]">
-      <div className="max-w-[1400px] mx-auto px-2 md:px-6">
+      <div className="max-w-[1400px] mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-16 mb-20">
           <motion.div 
             initial="hidden"
@@ -1304,7 +1346,7 @@ function TicketsSection() {
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-[1400px] mx-auto relative z-10 px-1 md:px-6 w-full">
+      <div className="max-w-[1400px] mx-auto relative z-10 px-6 w-full">
         <div className="text-left md:text-center mb-16">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -1559,7 +1601,7 @@ function SponsorshipSection() {
   return (
     <section id="sponsors" className="py-8 md:py-24 border-b border-white/10 bg-[#050505] relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-5" />
-      <div className="max-w-[1400px] mx-auto relative z-10 px-2 md:px-6">
+      <div className="max-w-[1400px] mx-auto relative z-10 px-6">
         <div className="text-left md:text-center mb-16 md:mb-24 flex flex-col items-start md:items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-black text-xs md:text-sm tracking-[0.3em] uppercase mb-4">Partnership & Sponsorship</motion.div>
           <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-[44px] font-black text-white leading-[1.1] mb-6 uppercase tracking-tighter">Sponsors don't get visibility.<br/> <span className="text-white/40">They get access.</span></motion.h2>
@@ -1692,7 +1734,7 @@ function ClosingCTASection() {
           This is where the deal gets done. Where the introduction becomes a partnership. Where the pitch becomes a term sheet.
         </motion.p>
         
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-8 md:gap-16 mb-12 text-[10px] font-black uppercase tracking-[0.2em] border-y border-white/20 py-10 px-12 md:px-20 backdrop-blur-md bg-white/5 rounded-none w-full max-w-4xl mx-auto">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-16 mb-12 text-[10px] font-black uppercase tracking-[0.2em] border-y border-white/20 py-6 sm:py-10 px-6 sm:px-20 backdrop-blur-md bg-white/5 rounded-none w-full max-w-4xl mx-auto text-center md:text-left">
           <span>Nov 14, 2026</span>
           <span className="hidden sm:block w-1.5 h-1.5 bg-brand-gold rounded-none" />
           <span>Abuja, Nigeria</span>
@@ -1700,18 +1742,20 @@ function ClosingCTASection() {
           <span>1,000+ Founders & Investors</span>
         </div>
 
-        <div className="font-bold text-xl font-heading mb-10 text-white drop-shadow-lg uppercase tracking-widest">Don't watch this from the outside.</div>
+        <div className="font-bold text-xl font-heading mb-10 text-white drop-shadow-lg uppercase tracking-widest text-center">Don't watch this from the outside.</div>
 
-        <div className="flex flex-wrap justify-center gap-4">
-          <a href="#tickets" className="flex items-center justify-center bg-brand-primary text-white px-10 py-5 text-xs font-bold uppercase tracking-[1.5px] hover:bg-orange-600 transition-all rounded-none shadow-2xl hover:-translate-y-1">
-            Get Tickets Now
+        <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto px-6 md:px-0 items-center justify-center">
+          <a href="#tickets" className="group bg-brand-primary text-white hover:bg-orange-600 transition-all duration-300 px-10 py-5 flex items-center justify-center gap-2 rounded-none font-bold text-xs uppercase tracking-widest shadow-xl hover:-translate-y-1 w-full md:w-auto">
+            <Ticket className="w-4 h-4" /> Get Tickets Now
           </a>
-          <a href="#sponsors" className="flex items-center justify-center border border-white/60 text-white px-10 py-5 text-xs font-bold uppercase tracking-[1.5px] hover:bg-white hover:text-black transition-all rounded-none hover:-translate-y-1 backdrop-blur-sm">
-            Become a Sponsor
-          </a>
-          <a href="#startups" className="flex items-center justify-center border border-white/60 text-white px-10 py-5 text-xs font-bold uppercase tracking-[1.5px] hover:bg-white hover:text-black transition-all rounded-none hover:-translate-y-1 backdrop-blur-sm">
-            Apply as a Startup
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+            <a href="#sponsors" className="group bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white transition-all duration-300 px-6 py-4 flex items-center justify-center gap-2 rounded-none font-bold text-[10px] uppercase tracking-widest shadow-xl hover:-translate-y-1 w-full sm:w-auto">
+              <Handshake className="w-4 h-4" /> Become a Sponsor
+            </a>
+            <a href="#startups" className="group bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white transition-all duration-300 px-6 py-4 flex items-center justify-center gap-2 rounded-none font-bold text-[10px] uppercase tracking-widest shadow-xl hover:-translate-y-1 w-full sm:w-auto">
+              <Zap className="w-4 h-4" /> Apply as a Startup
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -1728,11 +1772,11 @@ function Footer() {
         </h2>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-16 mb-32">
           <div className="lg:col-span-5">
             <div className="mb-8">
-              <img src={LogoNoBg} alt="Abuja Startup Expo" className="h-[48px] md:h-[72px] w-auto object-contain filter invert" />
+              <img src={LogoNoBg} alt="Abuja Startup Expo" className="h-[72px] md:h-[86px] w-auto object-contain filter invert" />
             </div>
             <p className="text-white/60 font-light max-w-md mb-12 text-sm leading-relaxed">
               CONVERGE 2026 brings together the most important players in Nigeria’s startup ecosystem. Where capital, innovation, and opportunity meet — in Nigeria’s capital city.
