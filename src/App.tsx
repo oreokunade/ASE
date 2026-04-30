@@ -372,13 +372,13 @@ function Hero() {
 function ManifestoSection() {
   return (
     <section id="about" className="section-padding border-b border-white/10 bg-[#020202]">
-      <div className="max-w-[1400px] mx-auto px-6">
+      <div className="max-w-[1400px] mx-auto">
         <div className="text-brand-primary font-black text-xs md:text-sm tracking-[0.3em] uppercase mb-4">What Is CONVERGE?</div>
         
         <div className="grid lg:grid-cols-12 gap-16 mb-24 items-center">
           <div className="lg:col-span-6 order-2 lg:order-1 space-y-12">
             <div>
-              <h2 className="text-4xl md:text-[44px] font-black text-white leading-[1.1] mb-8 uppercase tracking-tighter">
+              <h2 className="text-[36px] md:text-[44px] font-black text-white leading-[1.1] mb-8 uppercase tracking-tighter">
                 Not just an event. <br/>
                 <span className="text-white/40">A working ecosystem.</span>
               </h2>
@@ -523,11 +523,11 @@ function ExperienceZonesSection() {
 
   return (
     <section id="experience" className="py-8 md:py-24 border-b border-white/10 bg-[#050505]">
-      <div className="max-w-[1400px] mx-auto px-6">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-12 gap-10 md:gap-16 mb-20 items-end">
           <div className="lg:col-span-7">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-black text-xs md:text-sm tracking-[0.3em] uppercase mb-4">The Experience</motion.div>
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-[44px] font-black text-white leading-[1.1] uppercase tracking-tighter">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-[36px] md:text-[44px] font-black text-white leading-[1.1] uppercase tracking-tighter">
               Four Zones. <br/><span className="text-white/40">One Purpose.</span>
             </motion.h2>
           </div>
@@ -681,11 +681,11 @@ function WhyAttendSection() {
 
   return (
     <section className="py-8 md:py-24 border-b border-white/10 bg-[#080808]">
-      <div className="max-w-[1400px] mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-16 mb-20 items-start relative">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6">
+        <div className="grid lg:grid-cols-12 gap-16 mb-10 md:mb-20 items-start relative">
           <div className="lg:col-span-6 lg:sticky lg:top-32 lg:self-start">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-black text-xs md:text-sm tracking-[0.3em] uppercase mb-4">Community & Impact</motion.div>
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-2xl md:text-5xl lg:text-[44px] font-black text-white leading-[1.1] mb-8 uppercase tracking-tighter">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-[36px] md:text-5xl lg:text-[44px] font-black text-white leading-[1.1] mb-8 uppercase tracking-tighter">
               YOU DON'T ATTEND TO LISTEN. <br/><span className="text-white/40">YOU ATTEND TO ACT.</span>
             </motion.h2>
           </div>
@@ -788,11 +788,11 @@ function StartupShowcaseSection() {
 
   return (
     <section id="startups" className="py-8 md:py-24 border-b border-white/10 bg-[#050505]">
-      <div className="max-w-[1400px] mx-auto flex flex-col gap-20 px-6">
+      <div className="max-w-[1400px] mx-auto flex flex-col gap-20 px-4 md:px-6">
         <div className="grid lg:grid-cols-12 gap-10 md:gap-20 items-center">
           <div className="lg:col-span-7 order-2 lg:order-1 flex flex-col items-start text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-black text-sm tracking-[0.3em] uppercase mb-4">Startup Programme</motion.div>
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-[44px] font-black text-white leading-[1.1] mb-8 uppercase tracking-tighter">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-[36px] md:text-[44px] font-black text-white leading-[1.1] mb-8 uppercase tracking-tighter">
               Get Your Startup On The <br className="hidden md:block" /><span className="text-white/40">Biggest Stage In Abuja.</span>
             </motion.h2>
             <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg md:text-xl text-white/80 font-light leading-relaxed mb-12 max-w-3xl">
@@ -916,12 +916,12 @@ function SpeakersSection() {
 
   return (
     <section id="speakers" className="py-8 md:py-24 border-b border-white/10 bg-[#020202]">
-      <div className="max-w-[1400px] mx-auto px-6">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6">
         {/* Narrative Header Row */}
         <div className="grid lg:grid-cols-12 gap-10 md:gap-16 mb-16 md:mb-20">
           <div className="lg:col-span-7 order-2 lg:order-1">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-black text-xs md:text-sm tracking-[0.3em] uppercase mb-4">Speakers & Guests</motion.div>
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-[44px] font-black text-white leading-[1.1] mb-8 uppercase tracking-tighter">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-[36px] md:text-[44px] font-black text-white leading-[1.1] mb-8 uppercase tracking-tighter">
               The Voices Shaping <br/><span className="text-white/40">Nigeria's Next Decade.</span>
             </motion.h2>
             <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-white/80 text-lg md:text-xl font-light leading-relaxed mb-10 max-w-3xl">
@@ -1192,7 +1192,7 @@ function VolunteerSection() {
 
   return (
     <section id="volunteer" className="py-8 md:py-24 border-b border-white/10 bg-[#050505]">
-      <div className="max-w-[1400px] mx-auto px-6">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-12 gap-16 mb-20">
           <motion.div 
             initial="hidden"
@@ -1203,7 +1203,7 @@ function VolunteerSection() {
             <motion.div variants={textVariant} custom={0} className="text-brand-primary font-black text-xs md:text-sm tracking-[0.3em] uppercase mb-4 flex items-center gap-2">
               <span className="text-lg">★</span> Volunteer at CONVERGE 2026
             </motion.div>
-            <motion.h2 variants={textVariant} custom={1} className="text-4xl md:text-[44px] font-black text-white leading-[1.1] mb-8 uppercase tracking-tighter">
+            <motion.h2 variants={textVariant} custom={1} className="text-[36px] md:text-[44px] font-black text-white leading-[1.1] mb-8 uppercase tracking-tighter">
               Help build Nigeria's <br/><span className="text-white/40">Most Important <br/>Startup Gathering.</span>
             </motion.h2>
             <motion.div variants={textVariant} custom={2} className="space-y-6 text-lg text-white/90 font-light leading-relaxed mb-10">
@@ -1346,7 +1346,7 @@ function TicketsSection() {
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-[1400px] mx-auto relative z-10 px-6 w-full">
+      <div className="max-w-[1400px] mx-auto relative z-10 px-4 md:px-6 w-full">
         <div className="text-left md:text-center mb-16">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -1356,7 +1356,7 @@ function TicketsSection() {
           >
             Choose Your Experience
           </motion.div>
-          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-[44px] font-black text-white leading-[1.1] uppercase tracking-tighter">GET YOUR <br/><span className="text-white/40">TICKETS.</span></motion.h2>
+          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-[36px] md:text-[44px] font-black text-white leading-[1.1] uppercase tracking-tighter">GET YOUR <br/><span className="text-white/40">TICKETS.</span></motion.h2>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-6">
@@ -1601,10 +1601,10 @@ function SponsorshipSection() {
   return (
     <section id="sponsors" className="py-8 md:py-24 border-b border-white/10 bg-[#050505] relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-5" />
-      <div className="max-w-[1400px] mx-auto relative z-10 px-6">
+      <div className="max-w-[1400px] mx-auto relative z-10 px-4 md:px-6">
         <div className="text-left md:text-center mb-16 md:mb-24 flex flex-col items-start md:items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-black text-xs md:text-sm tracking-[0.3em] uppercase mb-4">Partnership & Sponsorship</motion.div>
-          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-[44px] font-black text-white leading-[1.1] mb-6 uppercase tracking-tighter">Sponsors don't get visibility.<br/> <span className="text-white/40">They get access.</span></motion.h2>
+          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-[36px] md:text-[44px] font-black text-white leading-[1.1] mb-6 uppercase tracking-tighter">Sponsors don't get visibility.<br/> <span className="text-white/40">They get access.</span></motion.h2>
           <motion.p initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg md:text-xl text-white/80 font-light max-w-2xl mx-0 md:mx-auto">The organisations that backed Nigeria's startup ecosystem.</motion.p>
         </div>
         <div className="text-left md:text-center mb-16">
@@ -1772,7 +1772,7 @@ function Footer() {
         </h2>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6 relative z-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-16 mb-32">
           <div className="lg:col-span-5">
             <div className="mb-8">
