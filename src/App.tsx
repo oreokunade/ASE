@@ -18,10 +18,7 @@ import {
   Ticket,
   Handshake,
   Mic,
-  Linkedin,
-  Twitter,
-  Instagram,
-  Youtube
+  Instagram
 } from 'lucide-react';
 
 import LogoNoBg from '../Images/Logo/Abuja Startup Expo Logo - No bg.png';
@@ -53,6 +50,7 @@ import SpeakersHeroImage from '../Images/ASE26 website Pictures/DSC01941.jpg';
 import StartupHeroImage from '../Images/ASE26 website Pictures/DSC01933.jpg';
 import ImpactHeroImage from '../Images/ASE26 website Pictures/DSC01992.jpg';
 import VolunteerHeroImage from '../Images/ASE26 website Pictures/DSC01846.jpg';
+import NetworkingHeroImage from '../Images/ASE26 website Pictures/DSC01911.jpg';
 
 function AnimatedCounter({ value }: { value: string }) {
   const target = parseInt(value.replace(/[^0-9]/g, ''), 10);
@@ -179,6 +177,7 @@ export default function App() {
       <Hero />
       <StatsSection />
       <ManifestoSection />
+      <GallerySection />
       <ExperienceZonesSection />
       <WhyAttendSection />
       <StartupShowcaseSection />
@@ -215,6 +214,90 @@ function StatsSection() {
         ))}
       </div>
     </section>
+  );
+}
+
+function AnimatedConverge({ className, text = "CONVERGE 2026", cssSize, mobileCssSize }: { className?: string, text?: string, fontSize?: string, cssSize?: string, mobileCssSize?: string }) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const sizeStyle = isMobile ? (mobileCssSize || '8.5vw') : (cssSize || 'clamp(48px, 10vw, 180px)');
+  const strokeWidth = isMobile ? '1px' : '2px';
+
+  return (
+    <div className={`relative ${className || ''}`} style={{ lineHeight: 1 }}>
+      {/* Layer 1: Orange stroke outline */}
+      <motion.span
+        initial={{ opacity: 1 }}
+        animate={{ opacity: [0, 1, 1, 0] }}
+        transition={{ duration: 3, times: [0, 0.3, 0.7, 1], ease: "easeInOut" }}
+        className="absolute inset-0 flex items-center justify-center"
+        style={{
+          fontFamily: "'Bricolage Grotesque', sans-serif",
+          fontWeight: 800,
+          fontSize: sizeStyle,
+          textTransform: 'uppercase',
+          letterSpacing: '-0.03em',
+          color: 'transparent',
+          WebkitTextStroke: `${strokeWidth} #F17522`,
+          whiteSpace: 'nowrap',
+        }}
+        aria-hidden="true"
+      >
+        {text}
+      </motion.span>
+
+      {/* Layer 2: Blue stroke outline (staggered) */}
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 0, 1, 1, 0] }}
+        transition={{ duration: 3.5, times: [0, 0.15, 0.4, 0.75, 1], ease: "easeInOut" }}
+        className="absolute inset-0 flex items-center justify-center"
+        style={{
+          fontFamily: "'Bricolage Grotesque', sans-serif",
+          fontWeight: 800,
+          fontSize: sizeStyle,
+          textTransform: 'uppercase',
+          letterSpacing: '-0.03em',
+          color: 'transparent',
+          WebkitTextStroke: `${strokeWidth} #387BBF`,
+          whiteSpace: 'nowrap',
+        }}
+        aria-hidden="true"
+      >
+        {text}
+      </motion.span>
+
+      {/* Layer 3: White solid fill (final state) */}
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 2 }}
+        className="relative"
+        style={{
+          fontFamily: "'Bricolage Grotesque', sans-serif",
+          fontWeight: 800,
+          fontSize: sizeStyle,
+          textTransform: 'uppercase',
+          letterSpacing: '-0.03em',
+          backgroundImage: 'linear-gradient(to bottom, #ffffff 40%, #dbeafe 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          whiteSpace: 'nowrap',
+          letterSpacing: '-0.05em',
+          textShadow: isMobile 
+            ? '0 1px 3px rgba(0,0,0,0.2)' 
+            : '0 -1px 0px rgba(255,255,255,0.4), 0 1px 0px rgba(0,0,0,0.1), 0 4px 12px rgba(56,123,191,0.15), 0 10px 20px rgba(0,0,0,0.3)',
+        }}
+      >
+        {text}
+      </motion.span>
+    </div>
   );
 }
 
@@ -295,47 +378,60 @@ function Hero() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 1000], [0, 300]);
   const opacity = useTransform(scrollY, [0, 500], [0.8, 0]);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#050505]">
-      {/* Background Video */}
+      {/* Background Container */}
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0 origin-bottom bg-[#050505]">
+        {/* Placeholder/Poster Image - Shows immediately */}
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center transition-opacity duration-1000"
+          style={{ 
+            backgroundImage: `url(${HeroBg})`,
+            opacity: videoLoaded ? 0.3 : 1
+          }}
+        />
+        
         <div className="absolute inset-0 bg-black/50 z-10" />
+        
         <video 
           autoPlay 
           muted 
           loop 
           playsInline 
           webkit-playsinline="true"
-          preload="auto"
-          className="w-full h-full object-cover object-center scale-105"
+          poster={HeroBg}
+          onLoadedData={() => setVideoLoaded(true)}
+          className={`w-full h-full object-cover object-center scale-105 transition-opacity duration-1000 ${
+            videoLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
         >
           <source src={HeroVideo} type="video/mp4" />
         </video>
       </motion.div>
 
       {/* Centered Main Headline */}
-      <div className="relative z-20 text-center px-4 flex flex-col items-center justify-center h-full pt-20">
+      <div className="relative z-20 text-center px-4 flex flex-col items-center justify-center h-full pt-20 overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="text-white font-black text-[11px] md:text-[13px] tracking-[0.5em] uppercase mb-8 flex items-center gap-5"
+          className="text-white font-black text-[9px] md:text-[13px] tracking-[0.3em] md:tracking-[0.5em] uppercase mb-4 md:mb-8 flex items-center gap-3 md:gap-5"
         >
           <span>Abuja Startup Expo</span>
           <div className="w-[1.5px] h-4 bg-white/30" />
           <span className="opacity-70">November 14th 2026</span>
         </motion.div>
         
-        <motion.h1
-          initial={{ opacity: 0, scale: 0.9 }}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: [0.2, 0.65, 0.3, 0.9] }}
-          className="text-[12vw] md:text-[8vw] font-black text-white leading-none uppercase tracking-tighter mb-10 drop-shadow-[0_10px_50px_rgba(0,0,0,0.5)] whitespace-nowrap"
-          style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+          transition={{ duration: 1.5, ease: [0.2, 0.65, 0.3, 0.9] }}
+          className="mb-6 md:mb-8 drop-shadow-[0_20px_100px_rgba(0,0,0,0.7)] flex flex-col items-center"
         >
-          CONVERGE 2026
-        </motion.h1>
+          <AnimatedConverge text="CONVERGE 2026" cssSize="clamp(80px, 11vw, 200px)" mobileCssSize="10vw" />
+        </motion.div>
 
         {/* Subheading & CTAs Centered Below */}
         <motion.div
@@ -365,6 +461,81 @@ function Hero() {
       </div>
 
       {/* Bottom Scroll Indicator or minimal footer could go here */}
+    </section>
+  );
+}
+
+function GallerySection() {
+  const images = [
+    { src: ManifestoImage, title: "Ecosystem Strategy", span: "md:col-span-2 md:row-span-2" },
+    { src: SpeakersHeroImage, title: "Expert Assembly", span: "md:col-span-1 md:row-span-1" },
+    { src: StartupHeroImage, title: "Founder Innovation", span: "md:col-span-1 md:row-span-1" },
+    { src: ImpactHeroImage, title: "Real Capital", span: "md:col-span-1 md:row-span-2" },
+    { src: VolunteerHeroImage, title: "Operational Excellence", span: "md:col-span-1 md:row-span-1" },
+    { src: NetworkingHeroImage, title: "Deep Connection", span: "md:col-span-2 md:row-span-1" },
+    { src: CardBg1, title: "Capital Flow", span: "md:col-span-1 md:row-span-1" },
+  ];
+
+  return (
+    <section className="bg-black py-20 md:py-24 border-b border-white/10 overflow-hidden relative">
+      {/* Decorative background text */}
+      <div className="absolute top-10 -right-20 text-[15vw] font-black text-white/[0.02] select-none pointer-events-none whitespace-nowrap uppercase hidden md:block">
+        Visual Impact Visual Impact Visual Impact
+      </div>
+
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6 md:gap-8 text-left">
+          <div className="w-full md:w-auto">
+            <div className="text-brand-primary font-black text-[10px] md:text-sm tracking-[0.3em] uppercase mb-3 md:mb-4">The Gallery</div>
+            <h2 className="text-[32px] md:text-[44px] font-black text-white leading-[1.1] uppercase tracking-tighter">
+              Moments of <br/><span className="text-white/40">Convergence.</span>
+            </h2>
+          </div>
+          <p className="text-white/60 text-sm md:text-base max-w-md font-light text-left">
+            A visual documentation of the builders, investors, and innovators who define the Abuja tech landscape.
+          </p>
+        </div>
+
+        {/* Mobile: Horizontal Scroll | Desktop: Brutalist Grid */}
+        <div className="relative group/gallery">
+          <div className="flex md:grid md:grid-cols-4 md:grid-rows-auto gap-4 overflow-x-auto md:overflow-visible pb-12 md:pb-0 scrollbar-hide snap-x snap-mandatory px-4 md:px-0 -mx-4 md:mx-0">
+            {images.map((img, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.8 }}
+                className={`relative group overflow-hidden border border-white/5 flex-shrink-0 w-[82vw] md:w-auto snap-start shadow-2xl ${img.span} min-h-[400px] md:min-h-[300px]`}
+              >
+                <img 
+                  src={img.src} 
+                  alt={img.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-all duration-1000 scale-110 group-hover:scale-100"
+                />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
+                
+                {/* Corner accent */}
+                <div className="absolute top-4 right-4 w-2 h-2 border-t border-r border-white/20 group-hover:border-brand-primary transition-colors" />
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Mobile Scroll Hint */}
+          <div className="flex md:hidden items-center justify-between mt-4 px-1">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-[1px] bg-brand-primary/50" />
+              <span className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em]">Swipe to explore</span>
+            </div>
+            <div className="flex gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-pulse" />
+              <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
+              <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
@@ -403,6 +574,7 @@ function ManifestoSection() {
               <img 
                 src={HeroBg} 
                 alt="CONVERGE 2026 Ecosystem" 
+                loading="lazy"
                 className="w-full h-[400px] md:h-[600px] object-cover opacity-90 group-hover:opacity-100 transition-all duration-700 scale-105 group-hover:scale-100" 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#020202] via-transparent to-transparent opacity-60" />
@@ -689,7 +861,7 @@ function WhyAttendSection() {
               YOU DON'T ATTEND TO LISTEN. <br/><span className="text-white/40">YOU ATTEND TO ACT.</span>
             </motion.h2>
           </div>
-          <div className="lg:col-span-6 hidden lg:block">
+          <div className="lg:col-span-6 w-full mt-4 lg:mt-0">
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -699,6 +871,7 @@ function WhyAttendSection() {
               <img 
                 src={ImpactHeroImage} 
                 alt="Impact at ASE" 
+                loading="lazy"
                 className="w-full h-full object-cover transition-all duration-700 scale-110 group-hover:scale-100"
               />
               <div className="absolute bottom-0 left-0 p-4 z-20">
@@ -803,9 +976,6 @@ function StartupShowcaseSection() {
               <a href="#" className="inline-flex items-center justify-center gap-3 bg-brand-primary text-white px-8 py-4 text-xs font-black uppercase tracking-[2px] hover:bg-white hover:text-black transition-all rounded-none shadow-xl hover:-translate-y-1">
                 Apply as a Startup <ArrowUpRight className="w-4 h-4" />
               </a>
-              <a href="#" className="inline-flex items-center justify-center gap-3 bg-transparent border border-white/20 text-white px-8 py-4 text-xs font-black uppercase tracking-[2px] hover:bg-white/5 transition-all rounded-none hover:-translate-y-1">
-                View Criteria
-              </a>
             </div>
           </div>
 
@@ -813,6 +983,7 @@ function StartupShowcaseSection() {
             <img 
               src={StartupHeroImage} 
               alt="Startup Pitching" 
+              loading="lazy"
               className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100" 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -976,6 +1147,7 @@ function SpeakersSection() {
               <img 
                 src={CardBg2} 
                 alt="Speakers at ASE" 
+                loading="lazy"
                 className="w-full h-full object-cover transition-all duration-700 scale-110 group-hover:scale-100"
               />
               <div className="absolute bottom-0 left-0 w-full p-6 z-20 bg-gradient-to-t from-black/80 to-transparent">
@@ -1006,6 +1178,7 @@ function SpeakersSection() {
                 <img 
                   src={speaker.image} 
                   alt={speaker.name} 
+                  loading="lazy"
                   className={`w-full h-full object-cover ${speaker.position || 'object-top'} transition-all duration-700 group-hover:scale-110`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-100 transition-all duration-500" />
@@ -1018,7 +1191,13 @@ function SpeakersSection() {
           </motion.div>
         </div>
 
-        <div className="max-w-[1400px] mx-auto bg-[#0a0a0a] border border-white/10 rounded-none relative overflow-hidden group shadow-2xl">
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-[1400px] mx-auto bg-[#0a0a0a] border border-white/10 rounded-none relative overflow-hidden group shadow-2xl"
+        >
           {/* Background Image / Texture */}
           <div 
             className="absolute inset-0 z-0 opacity-20"
@@ -1057,7 +1236,7 @@ function SpeakersSection() {
               <div className="text-[140px] font-black text-white/[0.02] leading-none select-none tracking-tighter group-hover:text-brand-primary/5 transition-colors duration-700">ASE</div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -1242,6 +1421,7 @@ function VolunteerSection() {
               <img 
                 src={VolunteerHeroImage} 
                 alt="CONVERGE Volunteer Community" 
+                loading="lazy"
                 className="w-full h-full object-cover transition-all duration-700 scale-110 group-hover:scale-100" 
               />
               <div className="absolute inset-0 bg-brand-primary/5 group-hover:bg-transparent transition-colors" />
@@ -1297,13 +1477,24 @@ function VolunteerSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-white/[0.02] border border-white/5 p-8 flex flex-col items-start group hover:bg-white/[0.04] hover:border-brand-primary/30 transition-all duration-500 rounded-none"
+              className="bg-[#0a0a0a] border border-white/5 p-8 flex flex-col items-start group hover:bg-[#0c0c0c] hover:border-brand-primary/30 transition-all duration-500 rounded-none relative overflow-hidden"
             >
-              <div className="group-hover:scale-110 transition-transform duration-500">
-                <PerkIcon color="#387BBF" type={p.type} />
+              {/* Background Image Accent */}
+              <div 
+                className="absolute inset-0 z-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none"
+                style={{ 
+                  backgroundImage: `url(${NetworkingHeroImage})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }}
+              />
+              <div className="relative z-10 w-full">
+                <div className="group-hover:scale-110 transition-transform duration-500 mb-4">
+                  <PerkIcon color="#387BBF" type={p.type} />
+                </div>
+                <h4 className="text-xs font-black font-heading text-brand-accent mb-3 uppercase tracking-widest">{p.title}</h4>
+                <p className="text-white/40 font-light text-[12px] leading-relaxed group-hover:text-white/60 transition-colors">{p.desc}</p>
               </div>
-              <h4 className="text-xs font-black font-heading text-brand-accent mb-3 uppercase tracking-widest">{p.title}</h4>
-              <p className="text-white/40 font-light text-[12px] leading-relaxed group-hover:text-white/60 transition-colors">{p.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -1607,6 +1798,7 @@ function SponsorshipSection() {
           <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-[36px] md:text-[44px] font-black text-white leading-[1.1] mb-6 uppercase tracking-tighter">Sponsors don't get visibility.<br/> <span className="text-white/40">They get access.</span></motion.h2>
           <motion.p initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg md:text-xl text-white/80 font-light max-w-2xl mx-0 md:mx-auto">The organisations that backed Nigeria's startup ecosystem.</motion.p>
         </div>
+
         <div className="text-left md:text-center mb-16">
           <h3 className="text-2xl font-black font-heading text-white uppercase tracking-wider">Sponsorship Levels</h3>
           <div className="w-20 h-1 bg-brand-gold mx-0 md:mx-auto mt-4 rounded-none" />
@@ -1676,6 +1868,7 @@ function SponsorshipSection() {
                 <img 
                   src={img} 
                   alt="2025 Sponsor" 
+                  loading="lazy"
                   className="max-h-10 md:max-h-14 w-auto object-contain opacity-100 transition-all duration-700" 
                 />
               </motion.div>
@@ -1773,8 +1966,8 @@ function Footer() {
       </div>
 
       <div className="max-w-[1400px] mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-16 mb-32">
-          <div className="lg:col-span-5">
+        <div className="grid grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-16 lg:gap-16 mb-32">
+          <div className="col-span-2 lg:col-span-5">
             <div className="mb-8">
               <img src={LogoNoBg} alt="Abuja Startup Expo" className="h-[72px] md:h-[86px] w-auto object-contain filter invert" />
             </div>
@@ -1783,20 +1976,19 @@ function Footer() {
             </p>
             
             <div className="flex gap-4">
-              {[
-                { icon: <Linkedin className="w-5 h-5" />, label: 'LinkedIn' },
-                { icon: <Twitter className="w-5 h-5" />, label: 'Twitter' },
-                { icon: <Instagram className="w-5 h-5" />, label: 'Instagram' },
-                { icon: <Youtube className="w-5 h-5" />, label: 'YouTube' }
-              ].map((social, i) => (
-                <a key={i} href="#" className="w-10 h-10 flex items-center justify-center text-white/60 hover:text-white transition-colors border border-white/10 hover:border-brand-primary/50 hover:bg-brand-primary/5 rounded-none" title={social.label}>
-                  {social.icon}
-                </a>
-              ))}
+              <a 
+                href="https://www.instagram.com/abujastartupexpo?igsh=MWl4azR3M3h4aTdqZw%3D%3D&utm_source=qr" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 flex items-center justify-center text-white/60 hover:text-white transition-colors border border-white/10 hover:border-brand-primary/50 hover:bg-brand-primary/5 rounded-none" 
+                title="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
             </div>
           </div>
           
-          <div className="lg:col-span-2 lg:col-start-7">
+          <div className="col-span-1 lg:col-span-2 lg:col-start-7">
             <h4 className="font-bold text-white mb-8 text-xs uppercase tracking-widest border-b border-white/10 pb-4 inline-block">Attend</h4>
             <ul className="space-y-4 text-sm text-white font-light tracking-wide">
               <li><a href="#tickets" className="hover:text-white transition-colors">Get Tickets</a></li>
@@ -1806,7 +1998,7 @@ function Footer() {
             </ul>
           </div>
 
-          <div className="lg:col-span-2">
+          <div className="col-span-1 lg:col-span-2">
             <h4 className="font-bold text-white mb-8 text-xs uppercase tracking-widest border-b border-white/10 pb-4 inline-block">Experience</h4>
             <ul className="space-y-4 text-sm text-white font-light tracking-wide">
               <li><a href="#experience" className="hover:text-white transition-colors">Capital Zone</a></li>
@@ -1816,13 +2008,17 @@ function Footer() {
             </ul>
           </div>
 
-          <div className="lg:col-span-2">
+          <div className="col-span-2 lg:col-span-2">
             <h4 className="font-bold text-white mb-8 text-xs uppercase tracking-widest border-b border-white/10 pb-4 inline-block">Connect</h4>
             <ul className="space-y-4 text-sm text-brand-text-muted font-light tracking-wide">
               <li><a href="#sponsors" className="hover:text-white transition-colors">Become a Sponsor</a></li>
               <li><a href="#volunteer" className="hover:text-white transition-colors">Volunteer</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Media & Press</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Newsletter</a></li>
+              <li>
+                <div className="mt-8 pt-6 border-t border-white/5">
+                  <div className="text-[10px] font-black uppercase tracking-widest text-brand-primary mb-2">Further Enquiry</div>
+                  <a href="mailto:Hello@abujastartupexpo.com" className="text-white hover:text-brand-primary transition-colors lowercase font-normal">Hello@abujastartupexpo.com</a>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
