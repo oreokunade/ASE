@@ -242,7 +242,7 @@ function AnimatedConverge({ className, text = "CONVERGE 2026", cssSize, mobileCs
           fontWeight: 800,
           fontSize: sizeStyle,
           textTransform: 'uppercase',
-          letterSpacing: '-0.03em',
+          letterSpacing: '-0.05em',
           color: 'transparent',
           WebkitTextStroke: `${strokeWidth} #F17522`,
           whiteSpace: 'nowrap',
@@ -263,7 +263,7 @@ function AnimatedConverge({ className, text = "CONVERGE 2026", cssSize, mobileCs
           fontWeight: 800,
           fontSize: sizeStyle,
           textTransform: 'uppercase',
-          letterSpacing: '-0.03em',
+          letterSpacing: '-0.05em',
           color: 'transparent',
           WebkitTextStroke: `${strokeWidth} #387BBF`,
           whiteSpace: 'nowrap',
@@ -284,7 +284,6 @@ function AnimatedConverge({ className, text = "CONVERGE 2026", cssSize, mobileCs
           fontWeight: 800,
           fontSize: sizeStyle,
           textTransform: 'uppercase',
-          letterSpacing: '-0.03em',
           backgroundImage: 'linear-gradient(to bottom, #ffffff 40%, #dbeafe 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
@@ -452,7 +451,7 @@ function Hero() {
               <a href="#sponsors" className="group bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white transition-all duration-300 px-6 py-4 flex items-center justify-center gap-2 rounded-none font-bold text-[10px] uppercase tracking-widest shadow-xl hover:-translate-y-1">
                 <Handshake className="w-4 h-4" /> Become a Sponsor
               </a>
-              <a href="#speakers" className="group bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white transition-all duration-300 px-6 py-4 flex items-center justify-center gap-2 rounded-none font-bold text-[10px] uppercase tracking-widest shadow-xl hover:-translate-y-1">
+              <a href="https://forms.gle/9g8D4iwajCEnut8c8" target="_blank" rel="noopener noreferrer" className="group bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white transition-all duration-300 px-6 py-4 flex items-center justify-center gap-2 rounded-none font-bold text-[10px] uppercase tracking-widest shadow-xl hover:-translate-y-1">
                 <Mic className="w-4 h-4" /> Apply as Speaker
               </a>
             </div>
@@ -1099,7 +1098,7 @@ function SpeakersSection() {
               CONVERGE doesn’t fill a stage. Every speaker is selected because they have something specific to offer the room — a network to open, capital to deploy, or insight earned from building the real thing.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="mb-16">
-              <a href="#" className="inline-flex items-center justify-center gap-3 bg-brand-primary text-white px-10 py-5 text-sm font-black uppercase tracking-[2px] hover:bg-white hover:text-black transition-all rounded-none shadow-xl hover:-translate-y-1">
+              <a href="https://forms.gle/9g8D4iwajCEnut8c8" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-3 bg-brand-primary text-white px-10 py-5 text-sm font-black uppercase tracking-[2px] hover:bg-white hover:text-black transition-all rounded-none shadow-xl hover:-translate-y-1">
                 Apply as a Speaker <ArrowUpRight className="w-5 h-5" />
               </a>
             </motion.div>
@@ -1389,7 +1388,7 @@ function VolunteerSection() {
               <p>Behind every great event is a team of people who chose to show up before anyone asked them to. CONVERGE 2026’s volunteer programme is for students, young professionals, and emerging ecosystem leaders who want to be part of building Nigeria’s startup moment — not just attending it.</p>
             </motion.div>
             <motion.div variants={textVariant} custom={3} className="flex flex-wrap gap-4 mb-16">
-              <a href="#" className="bg-white text-black h-14 px-8 text-xs font-bold uppercase tracking-widest flex items-center justify-center rounded-none hover:bg-brand-primary transition-colors">Apply to Volunteer</a>
+              <a href="https://forms.gle/i9t4UixEk5yayTQE9" target="_blank" rel="noopener noreferrer" className="bg-white text-black h-14 px-8 text-xs font-bold uppercase tracking-widest flex items-center justify-center rounded-none hover:bg-brand-primary transition-colors">Apply to Volunteer</a>
             </motion.div>
 
             {/* Who Should Apply relocated here */}
@@ -1994,7 +1993,7 @@ function Footer() {
               <li><a href="#tickets" className="hover:text-white transition-colors">Get Tickets</a></li>
               <li><a href="#startups" className="hover:text-white transition-colors">Startup Pass</a></li>
               <li><a href="#deal-room" className="hover:text-white transition-colors">Deal Room</a></li>
-              <li><a href="#speakers" className="hover:text-white transition-colors">Apply as Speaker</a></li>
+              <li><a href="https://forms.gle/9g8D4iwajCEnut8c8" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Apply as Speaker</a></li>
             </ul>
           </div>
 
@@ -2012,7 +2011,7 @@ function Footer() {
             <h4 className="font-bold text-white mb-8 text-xs uppercase tracking-widest border-b border-white/10 pb-4 inline-block">Connect</h4>
             <ul className="space-y-4 text-sm text-brand-text-muted font-light tracking-wide">
               <li><a href="#sponsors" className="hover:text-white transition-colors">Become a Sponsor</a></li>
-              <li><a href="#volunteer" className="hover:text-white transition-colors">Volunteer</a></li>
+              <li><a href="https://forms.gle/i9t4UixEk5yayTQE9" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Volunteer</a></li>
               <li>
                 <div className="mt-8 pt-6 border-t border-white/5">
                   <div className="text-[10px] font-black uppercase tracking-widest text-brand-primary mb-2">Further Enquiry</div>
