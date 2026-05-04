@@ -1,3 +1,8 @@
+# Redirects to external forms
+RedirectMatch 301 ^/volunteers/?$ https://forms.gle/i9t4UixEk5yayTQE9
+RedirectMatch 301 ^/speakers/?$ https://forms.gle/9g8D4iwajCEnut8c8
+
+# Client-side routing for React
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
