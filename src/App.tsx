@@ -170,6 +170,49 @@ function BackToTop() {
 }
 
 export default function App() {
+  // ==========================================
+  // 🛡️ CLIENT PAYMENT KILL SWITCH
+  // Set this to 'true' to lock the entire site.
+  // Set to 'false' to restore normal service.
+  // ==========================================
+  const IS_MAINTENANCE_MODE = true; 
+
+  if (IS_MAINTENANCE_MODE) {
+    return (
+      <div className="min-h-screen bg-[#050505] flex items-center justify-center p-6 font-sans selection:bg-orange-500 selection:text-white">
+        <div className="max-w-md w-full text-center space-y-10">
+          {/* Status Badge */}
+          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[10px] font-black uppercase tracking-[0.3em]">
+            <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+            System Maintenance
+          </div>
+
+          {/* Main Headline */}
+          <div className="space-y-4">
+            <h1 className="text-5xl md:text-6xl font-black text-white tracking-tighter uppercase leading-[0.9] text-center">
+              Under <br/><span className="text-white/20">Construction.</span>
+            </h1>
+            <p className="text-white/50 text-base md:text-lg font-light leading-relaxed max-w-sm mx-auto">
+              The Abuja Startup Expo platform is currently undergoing scheduled maintenance. Access will be restored shortly.
+            </p>
+          </div>
+
+          {/* Visual Divider */}
+          <div className="flex items-center gap-4 justify-center py-4">
+            <div className="h-px w-12 bg-white/10" />
+            <div className="w-1.5 h-1.5 rounded-full bg-orange-500/50" />
+            <div className="h-px w-12 bg-white/10" />
+          </div>
+
+          {/* Footer Branding */}
+          <div className="pt-4">
+            <div className="text-[9px] font-bold text-white/20 uppercase tracking-[0.5em]">Abuja Startup Expo 2026</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="selection:bg-brand-primary selection:text-white bg-brand-bg text-brand-dark min-h-screen bg-grid-pattern overflow-hidden font-sans">
       <Navbar />
