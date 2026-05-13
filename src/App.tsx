@@ -175,7 +175,7 @@ export default function App() {
   // Set this to 'true' to lock the entire site.
   // Set to 'false' to restore normal service.
   // ==========================================
-  const IS_MAINTENANCE_MODE = true; 
+  const IS_MAINTENANCE_MODE = false; 
 
   if (IS_MAINTENANCE_MODE) {
     return (
