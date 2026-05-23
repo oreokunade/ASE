@@ -380,7 +380,7 @@ function Navbar() {
       </div>
 
       <div className="flex gap-4 items-center">
-        <a href="#tickets" className="border border-white text-white hover:bg-white hover:text-black transition-all duration-300 text-[10px] md:text-xs font-bold uppercase tracking-wider flex items-center rounded-none px-4 md:px-8 h-10 md:h-12">
+        <a href="https://tix.africa/discover/abujastartupexpo" target="_blank" rel="noopener noreferrer" className="border border-white text-white hover:bg-white hover:text-black transition-all duration-300 text-[10px] md:text-xs font-bold uppercase tracking-wider flex items-center rounded-none px-4 md:px-8 h-10 md:h-12">
           Get Tickets <ArrowUpRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
         </a>
       </div>
@@ -487,7 +487,7 @@ function Hero() {
           </p>
           
           <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto">
-            <a href="#tickets" className="group bg-brand-primary text-white hover:bg-orange-600 transition-all duration-300 px-10 py-5 flex items-center justify-center gap-2 rounded-none font-bold text-xs uppercase tracking-widest shadow-xl hover:-translate-y-1">
+            <a href="https://tix.africa/discover/abujastartupexpo" target="_blank" rel="noopener noreferrer" className="group bg-brand-primary text-white hover:bg-orange-600 transition-all duration-300 px-10 py-5 flex items-center justify-center gap-2 rounded-none font-bold text-xs uppercase tracking-widest shadow-xl hover:-translate-y-1">
               <Ticket className="w-4 h-4" /> Get Your Tickets
             </a>
             <div className="flex gap-4">
@@ -1548,28 +1548,31 @@ function VolunteerSection() {
 function TicketsSection() {
   const tickets = [
     { 
-      name: "General Access", 
-      price: "₦35,000", 
-      tag: "Early bird · Ends Sept 30",
-      cta: "Get General Access", 
+      name: "Regular", 
+      price: "₦16,300", 
+      tag: "General Access",
+      cta: "Get Regular Access", 
       popular: false,
+      description: "Your entry into Nigeria's most outcome-focused startup gathering. With the General Access Pass, you get full access to everything happening on the main floor at CONVERGE 2026; all main stage sessions across the four experience zones, the full exhibition area.",
       features: ["All main stage sessions", "Full exhibition area access", "General networking sessions", "Event app & digital programme", "Access to recorded sessions"]
     },
     { 
       name: "Premium Access", 
-      price: "₦85,000", 
-      tag: "Early bird · Ends Sept 30",
+      price: "₦54,100", 
+      tag: "VIP Access",
       cta: "Get Premium Pass", 
       popular: true,
-      features: ["Priority front-10-rows seating", "Closed investor-only sessions", "Exclusive lounge (50 seats only)", "Speaker meet-and-greet access", "Physical event kit & programme", "+ All General benefits"]
+      description: "The full CONVERGE experience. Priority access, closed sessions, and a room within the room. The Premium Access Pass is built for the participant who is not just attending CONVERGE 2026; they are working it. Every element of this tier is designed to put you closer to the conversation.",
+      features: ["Priority front-10-rows seating", "Exclusive lounge (50 seats only)", "Speaker meet-and-greet access", "+ All General benefits", "Access to Pre-Event Mixer"]
     },
     { 
-      name: "Startup Pass", 
-      price: "₦120,000", 
-      tag: "Full package · No expiry",
-      cta: "Apply as Startup", 
+      name: "Corporate Bundle", 
+      price: "₦65,100", 
+      tag: "Team Package",
+      cta: "Get Corporate Bundle", 
       popular: false,
-      features: ["3m × 3m branded exhibition booth", "One 5-minute live pitch slot", "3 curated investor meetings", "Media & press profile feature", "30-min expert feedback session", "2 General Access passes included"]
+      description: "One ticket. Three seats. One of the smartest ways to bring your team to Nigeria's most important startup day. The Corporate Bundle is designed for companies, organisations, and teams who want to experience CONVERGE 2026 together.",
+      features: ["Full day access to all main stage sessions across the four experience zones", "Access to the exhibition floor", "General networking sessions", "Access to Pre-event Mixer", "Event app & digital programme"]
     },
   ];
 
@@ -1617,7 +1620,13 @@ function TicketsSection() {
                 <span className="text-4xl md:text-5xl font-black text-white font-heading tracking-tighter">{t.price}</span>
               </div>
               
-              <div className="w-full h-px bg-white/10 mb-8" />
+              <div className="w-full h-px bg-white/10 mb-6" />
+
+              {t.description && (
+                <p className="text-white/70 text-xs font-light mb-6 leading-relaxed">
+                  {t.description}
+                </p>
+              )}
 
               <ul className="space-y-4 mb-10 flex-grow text-[13px] text-white/90 font-light">
                 {t.features.map((f, j) => (
@@ -1630,9 +1639,9 @@ function TicketsSection() {
                 ))}
               </ul>
               
-              <button className={`w-full py-5 text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 rounded-none relative overflow-hidden group/btn ${t.popular ? 'bg-brand-primary text-white hover:bg-white hover:text-black' : 'bg-white text-black hover:bg-brand-primary'}`}>
+              <a href="https://tix.africa/discover/abujastartupexpo" target="_blank" rel="noopener noreferrer" className={`block text-center w-full py-5 text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 rounded-none relative overflow-hidden group/btn ${t.popular ? 'bg-brand-primary text-white hover:bg-white hover:text-black' : 'bg-white text-black hover:bg-brand-primary'}`}>
                 <span className="relative z-10">{t.cta}</span>
-              </button>
+              </a>
 
               {/* Decorative Background Blob for Hover */}
               <div className={`absolute -bottom-24 -right-24 w-48 h-48 rounded-full blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-700 ${t.popular ? 'bg-brand-accent' : 'bg-brand-primary'}`} />
@@ -1980,7 +1989,7 @@ function ClosingCTASection() {
         <div className="font-bold text-xl font-heading mb-10 text-white drop-shadow-lg uppercase tracking-widest text-center">Don't watch this from the outside.</div>
 
         <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto px-6 md:px-0 items-center justify-center">
-          <a href="#tickets" className="group bg-brand-primary text-white hover:bg-orange-600 transition-all duration-300 px-10 py-5 flex items-center justify-center gap-2 rounded-none font-bold text-xs uppercase tracking-widest shadow-xl hover:-translate-y-1 w-full md:w-auto">
+          <a href="https://tix.africa/discover/abujastartupexpo" target="_blank" rel="noopener noreferrer" className="group bg-brand-primary text-white hover:bg-orange-600 transition-all duration-300 px-10 py-5 flex items-center justify-center gap-2 rounded-none font-bold text-xs uppercase tracking-widest shadow-xl hover:-translate-y-1 w-full md:w-auto">
             <Ticket className="w-4 h-4" /> Get Tickets Now
           </a>
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -2033,7 +2042,8 @@ function Footer() {
           <div className="col-span-1 lg:col-span-2 lg:col-start-7">
             <h4 className="font-bold text-white mb-8 text-xs uppercase tracking-widest border-b border-white/10 pb-4 inline-block">Attend</h4>
             <ul className="space-y-4 text-sm text-white font-light tracking-wide">
-              <li><a href="#tickets" className="hover:text-white transition-colors">Get Tickets</a></li>
+              <li><a href="#experience" className="hover:text-white transition-colors">Experience Zones</a></li>
+              <li><a href="https://tix.africa/discover/abujastartupexpo" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Get Tickets</a></li>
               <li><a href="#startups" className="hover:text-white transition-colors">Startup Pass</a></li>
               <li><a href="#deal-room" className="hover:text-white transition-colors">Deal Room</a></li>
               <li><a href="https://forms.gle/9g8D4iwajCEnut8c8" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Apply as Speaker</a></li>
