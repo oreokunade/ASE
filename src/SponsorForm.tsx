@@ -34,11 +34,9 @@ export default function SponsorForm() {
     setIsSubmitting(true);
     
     const formData = new FormData(e.target);
-    const fullName = `${formData.get('first_name')} ${formData.get('last_name')}`;
-    
     const googleFormData = new FormData();
     googleFormData.append('entry.1348112742', formData.get('company_name'));
-    googleFormData.append('entry.301797802', fullName);
+    googleFormData.append('entry.301797802', formData.get('full_name'));
     googleFormData.append('entry.1243391090', formData.get('job_title'));
     googleFormData.append('entry.1324358255', formData.get('email'));
     googleFormData.append('entry.918672001', formData.get('phone'));
@@ -163,28 +161,16 @@ export default function SponsorForm() {
                     />
                   </div>
 
-                  {/* Name Row */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                      <label className="block text-white text-xs uppercase tracking-widest mb-3 font-bold">First name *</label>
-                      <input 
-                        type="text" 
-                        name="first_name"
-                        required
-                        placeholder="Enter first name"
-                        className="w-full bg-[#151515] border border-white/20 text-white p-4 focus:outline-none focus:border-brand-primary transition-colors rounded-none placeholder:text-white/50"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-white text-xs uppercase tracking-widest mb-3 font-bold">Last name *</label>
-                      <input 
-                        type="text" 
-                        name="last_name"
-                        required
-                        placeholder="Enter last name"
-                        className="w-full bg-[#151515] border border-white/20 text-white p-4 focus:outline-none focus:border-brand-primary transition-colors rounded-none placeholder:text-white/50"
-                      />
-                    </div>
+                  {/* Full Name */}
+                  <div>
+                    <label className="block text-white text-xs uppercase tracking-widest mb-3 font-bold">Full name *</label>
+                    <input 
+                      type="text" 
+                      name="full_name"
+                      required
+                      placeholder="Enter your full name"
+                      className="w-full bg-[#151515] border border-white/20 text-white p-4 focus:outline-none focus:border-brand-primary transition-colors rounded-none placeholder:text-white/50"
+                    />
                   </div>
 
                   {/* Job Title & Email */}
