@@ -27,6 +27,8 @@ import HeroVideo from '../Images/Hero video.MP4';
 import CardBg1 from '../Images/Other/photo_2026-04-29_16-56-34.jpg';
 import CardBg2 from '../Images/Other/photo_2026-04-29_16-57-10.jpg';
 import CardBg3 from '../Images/Other/photo_2026-04-29_16-57-15.jpg';
+import CardBg4 from '../Images/Other/photo_2026-04-29_16-57-22.jpg';
+import ExhibitionImg from '../Images/exhibit-at-abujastartupex-selar.com-6a46a5382a418.jpeg';
 import Speaker1 from '../Images/Speakers/2025/Ada Onobun, Managing Partner, First law Partners.jpg';
 import Speaker2 from '../Images/Speakers/2025/Barr Emmanuel Edet. Ag. Director regulation and compliance (NITDA).jpg';
 import Speaker3 from '../Images/Speakers/2025/Damilola Victoria Alabi (ESQ).jpg';
@@ -51,6 +53,7 @@ import StartupHeroImage from '../Images/ASE26 website Pictures/DSC01933.jpg';
 import ImpactHeroImage from '../Images/ASE26 website Pictures/DSC01992.jpg';
 import VolunteerHeroImage from '../Images/ASE26 website Pictures/DSC01846.jpg';
 import NetworkingHeroImage from '../Images/ASE26 website Pictures/DSC01911.jpg';
+import SponsorForm from './SponsorForm';
 
 function AnimatedCounter({ value }: { value: string }) {
   const target = parseInt(value.replace(/[^0-9]/g, ''), 10);
@@ -177,6 +180,14 @@ export default function App() {
   // ==========================================
   const IS_MAINTENANCE_MODE = false; 
 
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handleLocationChange = () => setCurrentPath(window.location.pathname);
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, []);
+
   if (IS_MAINTENANCE_MODE) {
     return (
       <div className="min-h-screen bg-[#050505] flex items-center justify-center p-6 font-sans selection:bg-orange-500 selection:text-white">
@@ -213,6 +224,10 @@ export default function App() {
     );
   }
 
+  if (currentPath === '/sponsor') {
+    return <SponsorForm />;
+  }
+
   return (
     <div className="selection:bg-brand-primary selection:text-white bg-brand-bg text-brand-dark min-h-screen bg-grid-pattern overflow-hidden font-sans">
       <Navbar />
@@ -224,6 +239,7 @@ export default function App() {
       <ExperienceZonesSection />
       <WhyAttendSection />
       <StartupShowcaseSection />
+      <ExhibitionSection />
       <SpeakersSection />
       <VolunteerSection />
       <TicketsSection />
@@ -343,7 +359,7 @@ function AnimatedConverge({ className, text = "CONVERGE 2026", cssSize, mobileCs
   );
 }
 
-function Navbar() {
+export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -361,7 +377,7 @@ function Navbar() {
         : "bg-transparent border-b border-transparent top-10"
     }`}>
       <div className="flex items-center">
-        <a href="#" className="block">
+        <a href="/" className="block">
           <img 
             src={LogoNoBg} 
             alt="CONVERGE 2026" 
@@ -371,16 +387,20 @@ function Navbar() {
       </div>
       
       <div className="hidden lg:flex gap-8 items-center text-[11px] font-bold tracking-widest uppercase text-white/80">
-        <a href="#about" className="hover:text-white transition-colors">About</a>
-        <a href="#experience" className="hover:text-white transition-colors">Experience</a>
-        <a href="#speakers" className="hover:text-white transition-colors">Speakers</a>
-        <a href="#tickets" className="hover:text-white transition-colors">Tickets</a>
-        <a href="#volunteer" className="hover:text-white transition-colors">Volunteer</a>
-        <a href="#sponsors" className="hover:text-white transition-colors">Sponsors</a>
+        <a href="/#about" className="hover:text-white transition-colors">About</a>
+        <a href="/#experience" className="hover:text-white transition-colors">Experience</a>
+        <a href="/#speakers" className="hover:text-white transition-colors">Speakers</a>
+        <a href="/#exhibit" className="hover:text-white transition-colors">Exhibit</a>
+        <a href="/#tickets" className="hover:text-white transition-colors">Tickets</a>
+        <a href="/#volunteer" className="hover:text-white transition-colors">Volunteer</a>
+        <a href="/sponsor" className="hover:text-white transition-colors">Sponsors</a>
       </div>
 
-      <div className="flex gap-4 items-center">
-        <a href="https://tix.africa/discover/abujastartupexpo" target="_blank" rel="noopener noreferrer" className="border border-white text-white hover:bg-white hover:text-black transition-all duration-300 text-[10px] md:text-xs font-bold uppercase tracking-wider flex items-center rounded-none px-4 md:px-8 h-10 md:h-12">
+      <div className="flex gap-2 md:gap-4 items-center">
+        <a href="https://selar.com/8o01e7i821" target="_blank" rel="noopener noreferrer" className="flex border border-white text-white hover:bg-white hover:text-black transition-all duration-300 text-[10px] md:text-xs font-bold uppercase tracking-wider items-center rounded-none px-4 md:px-8 h-10 md:h-12">
+          Get a Stand <ArrowUpRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+        </a>
+        <a href="https://tix.africa/discover/abujastartupexpo" target="_blank" rel="noopener noreferrer" className="hidden sm:flex border border-brand-primary bg-brand-primary text-white hover:bg-white hover:text-black hover:border-white transition-all duration-300 text-[10px] md:text-xs font-bold uppercase tracking-wider items-center rounded-none px-4 md:px-8 h-10 md:h-12">
           Get Tickets <ArrowUpRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
         </a>
       </div>
@@ -491,7 +511,7 @@ function Hero() {
               <Ticket className="w-4 h-4" /> Get Your Tickets
             </a>
             <div className="flex gap-4">
-              <a href="#sponsors" className="group bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white transition-all duration-300 px-6 py-4 flex items-center justify-center gap-2 rounded-none font-bold text-[10px] uppercase tracking-widest shadow-xl hover:-translate-y-1">
+              <a href="/sponsor" className="group bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white transition-all duration-300 px-6 py-4 flex items-center justify-center gap-2 rounded-none font-bold text-[10px] uppercase tracking-widest shadow-xl hover:-translate-y-1">
                 <Handshake className="w-4 h-4" /> Become a Sponsor
               </a>
               <a href="https://forms.gle/9g8D4iwajCEnut8c8" target="_blank" rel="noopener noreferrer" className="group bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white transition-all duration-300 px-6 py-4 flex items-center justify-center gap-2 rounded-none font-bold text-[10px] uppercase tracking-widest shadow-xl hover:-translate-y-1">
@@ -1074,6 +1094,54 @@ function StartupShowcaseSection() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ExhibitionSection() {
+  return (
+    <section id="exhibit" className="py-8 md:py-24 border-b border-white/10 bg-[#020202]">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6">
+        <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
+          
+          {/* Image side */}
+          <div className="order-2 lg:order-1 relative group overflow-hidden border border-white/10 shadow-2xl rounded-none h-[400px] md:h-[600px]">
+             <img 
+              src={ExhibitionImg} 
+              alt="Exhibition Booth" 
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80" />
+            <div className="absolute bottom-6 left-6 z-10">
+              <div className="bg-brand-primary text-white px-4 py-2 text-[10px] font-black uppercase tracking-widest">
+                Exhibition Floor
+              </div>
+            </div>
+          </div>
+
+          {/* Content side */}
+          <div className="order-1 lg:order-2 flex flex-col items-start text-left">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-brand-primary font-black text-sm tracking-[0.3em] uppercase mb-4">Showcase Your Brand</motion.div>
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-[36px] md:text-[44px] font-black text-white leading-[1.1] mb-8 uppercase tracking-tighter">
+              Apply to Exhibit at the <br className="hidden md:block" /><span className="text-white/40">Abuja Startup Expo 2026</span>
+            </motion.h2>
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg md:text-xl text-white/80 font-light leading-relaxed mb-8 max-w-2xl">
+              Step out of the pitch deck and into the spotlight. The exhibition floor at CONVERGE 2026 is where abstract ideas become tangible products. It’s an unfiltered proving ground designed for founders and enterprises to put their technology directly into the hands of the people who matter most—investors, enterprise buyers, and early adopters.
+            </motion.p>
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="text-lg md:text-xl text-white/80 font-light leading-relaxed mb-12 max-w-2xl">
+              We don’t do generic booths; we build high-visibility launchpads. Whether you are debuting a radical new feature or expanding your operations across Nigeria, exhibiting here guarantees your brand drives the capital's most important tech conversations.
+            </motion.p>
+            
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>
+              <a href="https://selar.com/8o01e7i821" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-3 bg-white text-black px-10 py-5 text-sm font-black uppercase tracking-[2px] hover:bg-brand-primary hover:text-white transition-all rounded-none shadow-xl hover:-translate-y-1">
+                Apply to Exhibit <ArrowUpRight className="w-5 h-5" />
+              </a>
+            </motion.div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -1890,8 +1958,8 @@ function SponsorshipSection() {
 
 
         <div className="text-center mt-20">
-          <a href="#" className="inline-flex items-center justify-center gap-4 bg-brand-primary text-white px-12 py-5 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all rounded-none shadow-xl group">
-            Request Sponsorship Deck <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          <a href="/sponsor" className="inline-flex items-center justify-center gap-4 bg-brand-primary text-white px-12 py-5 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all rounded-none shadow-xl group">
+            Become a Partner <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </a>
         </div>
 
@@ -1993,7 +2061,7 @@ function ClosingCTASection() {
             <Ticket className="w-4 h-4" /> Get Tickets Now
           </a>
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <a href="#sponsors" className="group bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white transition-all duration-300 px-6 py-4 flex items-center justify-center gap-2 rounded-none font-bold text-[10px] uppercase tracking-widest shadow-xl hover:-translate-y-1 w-full sm:w-auto">
+            <a href="/sponsor" className="group bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white transition-all duration-300 px-6 py-4 flex items-center justify-center gap-2 rounded-none font-bold text-[10px] uppercase tracking-widest shadow-xl hover:-translate-y-1 w-full sm:w-auto">
               <Handshake className="w-4 h-4" /> Become a Sponsor
             </a>
             <a href="#startups" className="group bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white transition-all duration-300 px-6 py-4 flex items-center justify-center gap-2 rounded-none font-bold text-[10px] uppercase tracking-widest shadow-xl hover:-translate-y-1 w-full sm:w-auto">
@@ -2006,7 +2074,7 @@ function ClosingCTASection() {
   );
 }
 
-function Footer() {
+export function Footer() {
   return (
     <footer className="pt-32 pb-16 bg-[#050505] relative overflow-hidden">
       {/* Background Text Backdrop */}
@@ -2042,10 +2110,11 @@ function Footer() {
           <div className="col-span-1 lg:col-span-2 lg:col-start-7">
             <h4 className="font-bold text-white mb-8 text-xs uppercase tracking-widest border-b border-white/10 pb-4 inline-block">Attend</h4>
             <ul className="space-y-4 text-sm text-white font-light tracking-wide">
-              <li><a href="#experience" className="hover:text-white transition-colors">Experience Zones</a></li>
+              <li><a href="/#experience" className="hover:text-white transition-colors">Experience Zones</a></li>
               <li><a href="https://tix.africa/discover/abujastartupexpo" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Get Tickets</a></li>
-              <li><a href="#startups" className="hover:text-white transition-colors">Startup Pass</a></li>
-              <li><a href="#deal-room" className="hover:text-white transition-colors">Deal Room</a></li>
+              <li><a href="/#startups" className="hover:text-white transition-colors">Startup Pass</a></li>
+              <li><a href="/#deal-room" className="hover:text-white transition-colors">Deal Room</a></li>
+              <li><a href="/#exhibit" className="hover:text-white transition-colors">Exhibit</a></li>
               <li><a href="https://forms.gle/9g8D4iwajCEnut8c8" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Apply as Speaker</a></li>
             </ul>
           </div>
@@ -2053,17 +2122,17 @@ function Footer() {
           <div className="col-span-1 lg:col-span-2">
             <h4 className="font-bold text-white mb-8 text-xs uppercase tracking-widest border-b border-white/10 pb-4 inline-block">Experience</h4>
             <ul className="space-y-4 text-sm text-white font-light tracking-wide">
-              <li><a href="#experience" className="hover:text-white transition-colors">Capital Zone</a></li>
-              <li><a href="#experience" className="hover:text-white transition-colors">Builders Zone</a></li>
-              <li><a href="#experience" className="hover:text-white transition-colors">Enterprise Zone</a></li>
-              <li><a href="#experience" className="hover:text-white transition-colors">Policy Zone</a></li>
+              <li><a href="/#experience" className="hover:text-white transition-colors">Capital Zone</a></li>
+              <li><a href="/#experience" className="hover:text-white transition-colors">Builders Zone</a></li>
+              <li><a href="/#experience" className="hover:text-white transition-colors">Enterprise Zone</a></li>
+              <li><a href="/#experience" className="hover:text-white transition-colors">Policy Zone</a></li>
             </ul>
           </div>
 
           <div className="col-span-2 lg:col-span-2">
             <h4 className="font-bold text-white mb-8 text-xs uppercase tracking-widest border-b border-white/10 pb-4 inline-block">Connect</h4>
             <ul className="space-y-4 text-sm text-brand-text-muted font-light tracking-wide">
-              <li><a href="#sponsors" className="hover:text-white transition-colors">Become a Sponsor</a></li>
+              <li><a href="/sponsor" className="hover:text-white transition-colors">Become a Sponsor</a></li>
               <li><a href="https://forms.gle/i9t4UixEk5yayTQE9" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Volunteer</a></li>
               <li>
                 <div className="mt-8 pt-6 border-t border-white/5">
