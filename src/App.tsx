@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform, animate, useMotionValue, useInView } from 'motion/react';
+import { motion, useScroll, useTransform, animate, useMotionValue, useInView, AnimatePresence } from 'motion/react';
 import { 
   ArrowUp,
   ArrowUpRight, 
@@ -18,7 +18,9 @@ import {
   Ticket,
   Handshake,
   Mic,
-  Instagram
+  Instagram,
+  Menu,
+  X
 } from 'lucide-react';
 
 import LogoNoBg from '../Images/Logo/Abuja Startup Expo Logo - No bg.png';
@@ -361,6 +363,7 @@ function AnimatedConverge({ className, text = "CONVERGE 2026", cssSize, mobileCs
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -371,40 +374,78 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav className={`fixed left-0 w-full z-50 py-4 px-6 md:px-12 flex justify-between items-center transition-all duration-500 ${
-      scrolled 
-        ? "bg-[#050505]/95 backdrop-blur-md border-b border-white/10 top-0" 
-        : "bg-transparent border-b border-transparent top-10"
-    }`}>
-      <div className="flex items-center">
-        <a href="/" className="block">
-          <img 
-            src={LogoNoBg} 
-            alt="CONVERGE 2026" 
-            className="h-[72px] md:h-[86px] object-contain filter invert" 
-          />
-        </a>
-      </div>
-      
-      <div className="hidden lg:flex gap-8 items-center text-[11px] font-bold tracking-widest uppercase text-white/80">
-        <a href="/#about" className="hover:text-white transition-colors">About</a>
-        <a href="/#experience" className="hover:text-white transition-colors">Experience</a>
-        <a href="/#speakers" className="hover:text-white transition-colors">Speakers</a>
-        <a href="/#exhibit" className="hover:text-white transition-colors">Exhibit</a>
-        <a href="/#tickets" className="hover:text-white transition-colors">Tickets</a>
-        <a href="/#volunteer" className="hover:text-white transition-colors">Volunteer</a>
-        <a href="/sponsor" className="hover:text-white transition-colors">Sponsors</a>
-      </div>
+    <>
+      <nav className={`fixed left-0 w-full z-50 py-4 px-6 md:px-12 flex justify-between items-center transition-all duration-500 ${
+        scrolled || isMobileMenuOpen
+          ? "bg-[#050505]/95 backdrop-blur-md border-b border-white/10 top-0" 
+          : "bg-transparent border-b border-transparent top-10"
+      }`}>
+        <div className="flex items-center">
+          <a href="/" className="block">
+            <img 
+              src={LogoNoBg} 
+              alt="CONVERGE 2026" 
+              className="h-[72px] md:h-[86px] object-contain filter invert" 
+            />
+          </a>
+        </div>
+        
+        <div className="hidden lg:flex gap-8 items-center text-[11px] font-bold tracking-widest uppercase text-white/80">
+          <a href="/#about" className="hover:text-white transition-colors">About</a>
+          <a href="/#experience" className="hover:text-white transition-colors">Experience</a>
+          <a href="/#speakers" className="hover:text-white transition-colors">Speakers</a>
+          <a href="/#exhibit" className="hover:text-white transition-colors">Exhibit</a>
+          <a href="/#tickets" className="hover:text-white transition-colors">Tickets</a>
+          <a href="/#volunteer" className="hover:text-white transition-colors">Volunteer</a>
+          <a href="/sponsor" className="hover:text-white transition-colors">Sponsors</a>
+        </div>
 
-      <div className="flex gap-2 md:gap-4 items-center">
-        <a href="https://selar.com/8o01e7i821" target="_blank" rel="noopener noreferrer" className="flex border border-white text-white hover:bg-white hover:text-black transition-all duration-300 text-[10px] md:text-xs font-bold uppercase tracking-wider items-center rounded-none px-4 md:px-8 h-10 md:h-12">
-          Get a Stand <ArrowUpRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
-        </a>
-        <a href="https://tix.africa/discover/abujastartupexpo" target="_blank" rel="noopener noreferrer" className="hidden sm:flex border border-brand-primary bg-brand-primary text-white hover:bg-white hover:text-black hover:border-white transition-all duration-300 text-[10px] md:text-xs font-bold uppercase tracking-wider items-center rounded-none px-4 md:px-8 h-10 md:h-12">
-          Get Tickets <ArrowUpRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
-        </a>
-      </div>
-    </nav>
+        <div className="flex gap-2 md:gap-4 items-center">
+          <a href="https://selar.com/8o01e7i821" target="_blank" rel="noopener noreferrer" className="flex border border-white text-white hover:bg-white hover:text-black transition-all duration-300 text-[10px] md:text-xs font-bold uppercase tracking-wider items-center rounded-none px-4 md:px-8 h-10 md:h-12">
+            Get a Stand <ArrowUpRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+          </a>
+          <a href="https://tix.africa/discover/abujastartupexpo" target="_blank" rel="noopener noreferrer" className="hidden sm:flex border border-brand-primary bg-brand-primary text-white hover:bg-white hover:text-black hover:border-white transition-all duration-300 text-[10px] md:text-xs font-bold uppercase tracking-wider items-center rounded-none px-4 md:px-8 h-10 md:h-12">
+            Get Tickets <ArrowUpRight className="w-3 h-3 md:w-4 md:h-4 ml-1" />
+          </a>
+          <button 
+            className="lg:hidden text-white ml-2 focus:outline-none" 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X strokeWidth={1} className="w-8 h-8" /> : <Menu strokeWidth={1} className="w-8 h-8" />}
+          </button>
+        </div>
+      </nav>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            initial={{ x: '-100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '-100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed inset-0 z-40 bg-[#050505] lg:hidden flex flex-col items-center justify-center gap-8"
+          >
+            {["About", "Experience", "Speakers", "Exhibit", "Tickets", "Volunteer", "Sponsors"].map((item, i) => {
+              const href = item === "Sponsors" ? "/sponsor" : `/#${item.toLowerCase()}`;
+              return (
+                <motion.a 
+                  key={item}
+                  href={href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ delay: 0.2 + i * 0.1 }}
+                  onClick={() => setIsMobileMenuOpen(false)} 
+                  className="text-xl font-bold tracking-widest uppercase text-white hover:text-brand-primary transition-colors"
+                >
+                  {item}
+                </motion.a>
+              );
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 
@@ -1106,8 +1147,8 @@ function ExhibitionSection() {
       <div className="max-w-[1400px] mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
           
-          {/* Image side */}
-          <div className="order-2 lg:order-1 relative group overflow-hidden border border-white/10 shadow-2xl rounded-none h-[400px] md:h-[600px]">
+          {/* Image side (Desktop only) */}
+          <div className="hidden lg:block lg:order-1 relative group overflow-hidden border border-white/10 shadow-2xl rounded-none h-[400px] md:h-[600px]">
              <img 
               src={ExhibitionImg} 
               alt="Exhibition Booth" 
@@ -1128,6 +1169,23 @@ function ExhibitionSection() {
             <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-[36px] md:text-[44px] font-black text-white leading-[1.1] mb-8 uppercase tracking-tighter">
               Apply to Exhibit at the <br className="hidden md:block" /><span className="text-white/40">Abuja Startup Expo 2026</span>
             </motion.h2>
+
+            {/* Mobile Image (rendered between header and body text) */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }} className="w-full relative group overflow-hidden border border-white/10 shadow-2xl rounded-none h-[300px] sm:h-[400px] lg:hidden mb-8">
+              <img 
+                src={ExhibitionImg} 
+                alt="Exhibition Booth" 
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80" />
+              <div className="absolute bottom-6 left-6 z-10">
+                <div className="bg-brand-primary text-white px-4 py-2 text-[10px] font-black uppercase tracking-widest">
+                  Exhibition Floor
+                </div>
+              </div>
+            </motion.div>
+
             <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg md:text-xl text-white/80 font-light leading-relaxed mb-8 max-w-2xl">
               Step out of the pitch deck and into the spotlight. The exhibition floor at CONVERGE 2026 is where abstract ideas become tangible products. It’s an unfiltered proving ground designed for founders and enterprises to put their technology directly into the hands of the people who matter most—investors, enterprise buyers, and early adopters.
             </motion.p>
